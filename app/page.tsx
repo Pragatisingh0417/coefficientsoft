@@ -33,7 +33,7 @@ export default function Home() {
           </span>
         </a>
 
-        <span>© {new Date().getFullYear()} CoefficientSoft</span>
+<span>© 2026 CoefficientSoft</span>
         <a href="#contact">Let&apos;s build something <ArrowFooter /></a>
       </footer>
     </>
