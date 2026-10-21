@@ -6,6 +6,7 @@ import {
   Smartphone,
   Workflow,
 } from "lucide-react";
+import { siteImages } from "./site-images";
 
 export const services = [
   {
@@ -17,7 +18,7 @@ export const services = [
     detail:
       "SEO, digital campaigns, paid advertising, content, and online growth—planned around the audience and goals you actually have.",
     outcome: "Reach the right people with a more coherent digital presence.",
-    image: "services-marketing.webp",
+    image: siteImages.servicesMarketing,
     icon: ChartNoAxesCombined,
   },
   {
@@ -29,7 +30,7 @@ export const services = [
     detail:
       "SaaS platforms, dashboards, business applications, automation, and custom product engineering.",
     outcome: "Turn product requirements into a maintainable working system.",
-    image: "services-software.webp",
+    image: siteImages.servicesSoftware,
     icon: AppWindow,
   },
   {
@@ -41,7 +42,7 @@ export const services = [
     detail:
       "Business websites, e-commerce, landing pages, and web applications built around your audience and workflow.",
     outcome: "Give customers and teams a web experience that works for them.",
-    image: "services-websites.webp",
+    image: siteImages.servicesWebsite,
     icon: Code2,
   },
   {
@@ -53,7 +54,7 @@ export const services = [
     detail:
       "Mobile applications and experiences selected to suit the product goals, audience, and delivery constraints.",
     outcome: "Make important product journeys accessible beyond the desktop.",
-    image: "services-mobile-apps.webp",
+    image: siteImages.servicesMobile,
     icon: Smartphone,
   },
   {
@@ -65,7 +66,7 @@ export const services = [
     detail:
       "Tailored business systems, APIs, integrations, and workflow improvements designed around existing operations.",
     outcome: "Reduce friction between the tools and processes your business relies on.",
-    image: "services-integrations.webp",
+    image: siteImages.servicesIntegrations,
     icon: Workflow,
   },
   {
@@ -77,7 +78,7 @@ export const services = [
     detail:
       "We are preparing the details of this offering. Contact us to ask about current career guidance and counselling options.",
     outcome: "Get in touch for accurate information about what is currently available.",
-    image: "services-career-counselling.webp",
+    image: siteImages.servicesCounselling,
     icon: BriefcaseBusiness,
   },
 ] as const;

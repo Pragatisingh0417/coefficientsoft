@@ -14,9 +14,9 @@ const links = [
 ];
 
 const desktopLink =
-  "relative text-[13px] text-[#b6bdc9] transition-colors hover:text-white";
+  "relative text-[16px] text-[#b6bdc9] transition-colors hover:text-white";
 const primaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[13px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
+  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[14px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
 
 function isLinkActive(pathname: string, href: string) {
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -34,7 +34,7 @@ export default function Navbar() {
           <span>Coefficient<span className="text-blue">Soft</span></span>
         </Link>
 
-        <div className="hidden items-center gap-5 lg:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((link) => {
             const active = isLinkActive(pathname, link.href);
             return (
@@ -50,7 +50,7 @@ export default function Navbar() {
           })}
         </div>
 
-        <Link className="hidden min-h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.025] px-4 text-[13px] font-semibold transition hover:-translate-y-0.5 hover:border-blue/60 md:inline-flex" href="/contact">
+        <Link className="hidden min-h-11 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.025] px-4 text-[14px] font-semibold transition hover:-translate-y-0.5 hover:border-blue/60 md:inline-flex" href="/contact">
           Let&apos;s talk <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
 
@@ -74,7 +74,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`border-b border-white/10 py-4 text-[14px] text-[#b6bdc9] transition hover:text-white ${active ? "text-white" : ""}`}
+                className={`border-b border-white/10 py-4 text-[16px] text-[#b6bdc9] transition hover:text-white ${active ? "text-white" : ""}`}
                 aria-current={active ? "page" : undefined}
               >
                 {link.label}

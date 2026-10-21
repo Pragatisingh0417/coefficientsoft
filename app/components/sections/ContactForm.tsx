@@ -98,10 +98,10 @@ export default function ContactForm() {
     <form className="border border-white/10 bg-[#10141d]/90 p-5 sm:p-6" onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex min-w-0 flex-col gap-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="name">Name</label>
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="name">Name</label>
           <input
             id="name"
-            className="min-h-[50px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none"
+            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "name-error" : undefined}
@@ -112,11 +112,11 @@ export default function ContactForm() {
         </div>
 
         <div className="flex min-w-0 flex-col gap-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="email">Business email</label>
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="email">Business email</label>
           <input
             id="email"
             type="email"
-            className="min-h-[50px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none"
+            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
@@ -127,15 +127,15 @@ export default function ContactForm() {
         </div>
 
         <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="company">Company or project name (optional)</label>
-          <input id="company" className="min-h-[50px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none" {...register("company")} />
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="company">Company or project name (optional)</label>
+          <input id="company" className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("company")} />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="service">Service of interest</label>
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="service">Service of interest</label>
           <select
             id="service"
-            className="min-h-[50px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none"
+            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("service")}
             aria-invalid={!!errors.service}
             aria-describedby={errors.service ? "service-error" : undefined}
@@ -151,16 +151,16 @@ export default function ContactForm() {
         </div>
 
         <div className="flex min-w-0 flex-col gap-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="budget">Project budget (optional)</label>
-          <input id="budget" className="min-h-[50px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none" {...register("budget")} />
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="budget">Project budget (optional)</label>
+          <input id="budget" className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("budget")} />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
-          <label className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#d9e1ef]" htmlFor="projectDescription">Project description</label>
+          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="projectDescription">Project description</label>
           <textarea
             id="projectDescription"
             rows={6}
-            className="min-h-[150px] w-full resize-y border border-white/15 bg-[#070a0e] px-4 py-3 text-[14px] text-white focus:border-blue focus:outline-none"
+            className="min-h-[150px] w-full resize-y border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] leading-[1.6] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("projectDescription")}
             aria-invalid={!!errors.projectDescription}
             aria-describedby={
@@ -176,7 +176,7 @@ export default function ContactForm() {
       </div>
 
       <div className="mt-6">
-        <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2.5 border border-blue bg-blue px-5 text-[13px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff] disabled:cursor-not-allowed disabled:opacity-60" disabled={isSubmitting}>
+        <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2.5 border border-blue bg-blue px-5 text-[15px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff] disabled:cursor-not-allowed disabled:opacity-60" disabled={isSubmitting}>
           {isSubmitting ? "Sending..." : "Send inquiry"}
           <ArrowRight size={18} />
         </button>
@@ -184,7 +184,7 @@ export default function ContactForm() {
 
       {feedback && (
         <div
-          className={`mt-5 flex items-center gap-2.5 border px-4 py-3 text-[13px] ${feedback.tone === "error" ? "border-red-400/40 bg-red-950/30 text-red-100" : "border-green-500/40 bg-green-950/30 text-green-100"}`}
+          className={`mt-5 flex items-center gap-2.5 border px-4 py-3 text-[15px] leading-[1.6] ${feedback.tone === "error" ? "border-red-400/40 bg-red-950/30 text-red-100" : "border-blue/50 bg-blue/10 text-[#ddecff]"}`}
           role={feedback.tone === "error" ? "alert" : "status"}
           aria-live={feedback.tone === "error" ? "assertive" : "polite"}
         >

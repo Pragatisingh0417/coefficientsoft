@@ -126,6 +126,30 @@ function CLogo({ motionEnabled }: { motionEnabled: React.RefObject<boolean> }) {
   );
 }
 
+function MovingLight({ motionEnabled }: { motionEnabled: React.RefObject<boolean> }) {
+  const light = useRef<THREE.PointLight>(null);
+
+  useFrame((state) => {
+    if (!light.current || !motionEnabled.current) return;
+
+    const time = state.clock.elapsedTime;
+    light.current.position.x = Math.sin(time * 0.34) * 2.5;
+    light.current.position.y = Math.cos(time * 0.27) * 1.6;
+    light.current.intensity = 4.5 + Math.sin(time * 0.45) * 0.75;
+  });
+
+  return (
+    <pointLight
+      ref={light}
+      position={[0, 0, 2]}
+      color="#78b7ff"
+      intensity={4.5}
+      distance={8}
+      decay={2}
+    />
+  );
+}
+
 function Scene({ motionEnabled }: { motionEnabled: React.RefObject<boolean> }) {
   return (
     <>
@@ -133,7 +157,7 @@ function Scene({ motionEnabled }: { motionEnabled: React.RefObject<boolean> }) {
       <directionalLight position={[4, 5, 6]} intensity={2.2} color="#f2f6ff" />
       <directionalLight position={[-3, -1, 5]} intensity={1.25} color="#43a2ff" />
       <pointLight position={[0, 0, 4]} color="#087FFF" intensity={20} />
-      <pointLight position={[-3, 1, -2]} color="#96ccff" intensity={7} />
+      <MovingLight motionEnabled={motionEnabled} />
       <CLogo motionEnabled={motionEnabled} />
       <Environment preset="city" />
     </>

@@ -3,16 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import AssetFrame from "../components/layout/AssetFrame";
 import PageBanner from "../components/layout/PageBanner";
 import { services } from "../data/services";
-import { siteImages } from "../data/site-images";
-
-const serviceImages = [
-  siteImages.servicesMarketing,
-  siteImages.servicesSoftware,
-  siteImages.servicesWebsite,
-  siteImages.servicesMobile,
-  siteImages.servicesIntegrations,
-  siteImages.servicesCounselling,
-];
 
 const primaryButton =
   "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[13px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
@@ -46,7 +36,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="flex flex-col gap-14 md:gap-[72px]">
-            {services.map(({ id, number, title, detail, outcome, icon: Icon }, index) => (
+            {services.map(({ id, number, title, detail, outcome, image, icon: Icon }, index) => (
               <article
                 id={id}
                 className="grid scroll-mt-28 grid-cols-1 items-center gap-6 md:grid-cols-2 md:gap-12 lg:gap-20"
@@ -54,7 +44,7 @@ export default function ServicesPage() {
                 data-reveal
               >
                 <AssetFrame
-                  asset={serviceImages[index]}
+                  asset={image}
                   className={`aspect-[3/2] w-full border border-white/15 ${index % 2 === 1 ? "md:order-2" : ""}`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   fallback={

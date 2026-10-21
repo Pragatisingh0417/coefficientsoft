@@ -1,19 +1,49 @@
-# Image asset map
+# Image assets
 
-The `siteImages` registry in `app/data/site-images.ts` is the canonical map for page imagery. To add or replace an image, put the file at the path below `public/images/`, then set that registry entry's `src` to `/images/<filename>`. The `filename` field records the intended path; a `null` `src` deliberately shows the component's designed fallback rather than requesting a missing file.
+`app/data/site-images.ts` is the single registry for website images. Put a file
+inside the matching folder under `public/images/`, then update that registry
+entry's `src` to its public URL, for example:
 
-| Page / section | Registry key | Exact filename under `public/images/` | Ratio | Current source |
-| --- | --- | --- | --- | --- |
-| Home / product capability | `homepageProduct` | `projects/capabilities-product.webp` | 16:10 | Designed fallback |
-| Home / operations capability | `homepageOperations` | `projects/capabilities-commerce.webp` | 16:10 | Designed fallback |
-| Services / digital marketing | `servicesMarketing` | `services/services-marketing.webp` | 3:2 | Designed fallback |
-| Services / SaaS and software products | `servicesSoftware` | `services/services-software.webp` | 3:2 | Designed fallback |
-| Services / website development | `servicesWebsite` | `services/services-websites.webp` | 3:2 | Designed fallback |
-| Services / mobile app development | `servicesMobile` | `services/services-mobile-apps.webp` | 3:2 | Designed fallback |
-| Services / custom software and integrations | `servicesIntegrations` | `services/services-integrations.webp` | 3:2 | Designed fallback |
-| Services / career counselling | `servicesCounselling` | `services/services-career-counselling.webp` | 3:2 | Designed fallback |
-| About / collaboration banner | `aboutCollaboration` | `about/about-collaboration.jpg` | 4:3 | Existing local image |
-| Careers / learning banner | `careersLearning` | `careers/careers-internships.webp` | 4:3 | Designed fallback |
-| Contact / conversation banner | `contactConversation` | `contact/contact-conversation.webp` | 4:3 | Designed fallback |
+```ts
+src: "/images/services/digital-marketing-analytics.svg",
+filename: "services/digital-marketing-analytics.svg",
+alt: "A concise, accurate description of the image",
+aspectRatio: "3 / 2",
+```
 
-The Home hero is the Three.js C sculpture, not a raster image. Shared page banners use purpose-built visual fallbacks for Services, Careers, and Contact; the About banner uses the mapped collaboration photograph. No testimonial, client project, or team photo is fabricated. Each registry entry includes its descriptive alt text and ratio. `AssetFrame` renders configured sources with `next/image`, responsive `sizes`, and `object-cover`; keep files at the documented ratio and use a meaningful alt for informative images.
+Use `/images/...` in `src`—never `/public/images/...`. `AssetFrame` uses
+`next/image`, responsive `sizes`, and an in-layout fallback if a file is not
+configured or cannot load. Keep informative alt text accurate and write
+decorative imagery as `alt: ""`.
+
+| Page / section | Registry entry | File under `public/images/` | Ratio |
+| --- | --- | --- | --- |
+| Home / software product capability | `homepageProduct` | `projects/product-interface-capability.svg` | 16:10 |
+| Home / connected systems capability | `homepageSystems` | `services/custom-software-integrations.svg` | 16:10 |
+| Home / mobile applications capability | `homepageMobile` | `services/mobile-app-interface.svg` | 4:3 |
+| Home / connected digital experiences illustration | Inline animated SVG in `NetworkStory.tsx` | No raster file | Responsive vector |
+| Services / Digital Marketing & Advertising | `servicesMarketing` | `services/digital-marketing-analytics.svg` | 3:2 |
+| Services / SaaS & Software Products | `servicesSoftware` | `services/saas-product-platform.svg` | 3:2 |
+| Services / Website Development | `servicesWebsite` | `services/website-development.jpg` | 3:2 |
+| Services / Mobile App Development | `servicesMobile` | `services/mobile-app-interface.svg` | 3:2 |
+| Services / Custom Software & Integrations | `servicesIntegrations` | `services/custom-software-integrations.svg` | 3:2 |
+| Services / Career Counselling | `servicesCounselling` | `services/career-counselling.svg` | 3:2 |
+| About / engineering story banner | `aboutCollaboration` | `about/about-engineering.svg` | 4:3 |
+| Careers / collaboration banner | `careersLearning` | `careers/careers-collaboration.svg` | 4:3 |
+| Contact / project conversation banner | `contactConversation` | `contact/contact-connections.svg` | 4:3 |
+
+The Home hero is the live Three.js C sculpture. The network story is an original
+animated SVG, not a static screenshot. Product, marketing, mobile, and system
+visuals are original interface illustrations with no customer names or
+performance figures; they are illustrative capability imagery, not completed
+client work. About, Careers, and Contact use original vector illustrations. To
+replace them, add the new files under their page folders and update the matching
+registry entry in `app/data/site-images.ts`; the `AssetFrame` fallback remains
+available while a replacement is being prepared.
+
+Folders are organized by page intent: `home/`, `services/`, `about/`, `projects/`,
+`careers/`, and `contact/`. For a future testimonial, add only genuine approved
+feedback to the typed `testimonials` array in `app/data/testimonials.ts`; include
+the speaker's confirmed name and role/company only when permission to publish
+those details has been given. The section already renders a clear unpublished
+state while the array is empty.

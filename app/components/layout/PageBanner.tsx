@@ -20,9 +20,9 @@ type PageBannerProps = {
 };
 
 const primaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[13px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
+  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[14px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
 const secondaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-white/10 bg-white/[0.025] px-5 text-[13px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:border-blue/60";
+  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-white/10 bg-white/[0.025] px-5 text-[14px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:border-blue/60";
 
 function SystemsIllustration() {
   return (
@@ -93,7 +93,7 @@ export default function PageBanner({
       <h1 className="my-6 max-w-[720px] text-[clamp(44px,5.5vw,76px)] font-semibold leading-[0.99] tracking-[-0.065em]">
         {title}
       </h1>
-      <p className="max-w-[560px] text-[15px] leading-[1.9] text-muted">{description}</p>
+      <p className="max-w-[560px] text-[16px] leading-[1.85] text-muted md:text-[18px]">{description}</p>
       {(action || secondaryAction) && (
         <div className="mt-7 flex flex-wrap gap-3">
           {action && (

@@ -111,12 +111,15 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-auto grid min-h-[max(680px,calc(100svh-76px))] w-full max-w-[1200px] grid-cols-1 items-center gap-5 px-5 pb-24 pt-14 sm:px-8 md:grid-cols-[1.02fr_0.98fr] md:gap-0"
+      className="relative isolate mx-auto grid min-h-[max(680px,calc(100svh-76px))] w-full max-w-[1320px] grid-cols-1 items-center gap-5 overflow-hidden px-5 pb-24 pt-14 sm:px-8 md:grid-cols-[1.02fr_0.98fr] md:gap-0"
     >
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_38%,rgba(8,127,255,0.12),transparent_35%),radial-gradient(ellipse_at_20%_14%,rgba(198,167,106,0.035),transparent_28%)]" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[55%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.012))]" />
+
       <div className="hero-copy relative z-[2] pb-5">
         <div className={eyebrow}>
-          <span className="size-[7px] rounded-full bg-blue shadow-[0_0_14px_rgba(8,127,255,0.8)]" />
-          SOFTWARE · SAAS · AI SOLUTIONS
+          <span className="size-[7px] rounded-full bg-[#c6a76a]" />
+          SOFTWARE · DIGITAL PRODUCTS · ENGINEERING
         </div>
 
         <h1 className="my-6 text-[clamp(52px,7.2vw,88px)] font-semibold leading-[0.99] tracking-[-0.065em]">
@@ -128,8 +131,8 @@ export default function Hero() {
         </h1>
 
         <p className="max-w-[445px] text-[15px] leading-[1.9] text-muted">
-          We design and build digital products that help businesses solve complex
-          problems, work smarter, and grow with confidence.
+          We design and build software, digital products, and connected
+          experiences that help businesses work through complex challenges.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-3">
