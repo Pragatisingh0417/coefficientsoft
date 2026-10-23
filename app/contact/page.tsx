@@ -33,18 +33,18 @@ export default function ContactPage() {
 
             <AssetFrame
               asset={siteImages.contactConversation}
-              className="aspect-[4/3] w-full border border-white/10 bg-[#0d1119]"
+              className="aspect-[4/3] w-full border border-white/10 bg-[#101020]"
               sizes="(max-width: 768px) 100vw, 38vw"
               fallback={
-                <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_50%_50%,rgba(8,127,255,0.2),transparent_66%),#0d1119]">
-                  <span className="grid size-32 place-items-center rounded-full border border-blue/50 text-4xl font-semibold text-[#b9d8fb]">
+                <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_43%_44%,rgba(8,127,255,0.22),transparent_52%),radial-gradient(ellipse_at_70%_70%,rgba(255,40,185,0.13),transparent_48%),#101020]">
+                  <span className="grid size-32 place-items-center rounded-full border border-[#53d7ff]/50 text-4xl font-semibold text-[#b9d8fb]">
                     C
                   </span>
                 </div>
               }
             />
 
-            <div className="mt-5 border-l-2 border-blue/70 bg-[#0d1119] px-5 py-4">
+            <div className="mt-5 border-l-2 border-[#53d7ff]/70 bg-[#101020] px-5 py-4">
               <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[#b9d8fb]">
                 <Check size={15} aria-hidden="true" />
                 A useful first note
@@ -70,7 +70,7 @@ export default function ContactPage() {
         </section>
 
         <section className="mx-auto mb-10 w-full max-w-[1200px] px-5 sm:px-8" data-reveal>
-          <div className="flex flex-col gap-5 border-y border-white/10 bg-[#0a0d13] px-5 py-7 sm:px-7 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-5 border-y border-white/10 bg-[#101020] px-5 py-7 sm:px-7 md:flex-row md:items-center md:justify-between">
             <p className="mb-0 max-w-[700px] text-[16px] leading-[1.8] text-[#d1d9e5]">
               Still shaping the idea? Explore the{" "}
               <Link

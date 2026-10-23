@@ -1,163 +1,190 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from "react";
+import AssetFrame from "../layout/AssetFrame";
+import { siteImages } from "../../data/site-images";
 
 const HeroScene = dynamic(() => import("../three/HeroScene"), {
   ssr: false,
-  loading: () => <div className="relative z-[2] h-[340px] w-full md:h-[460px]" />,
+  loading: () => <div className="absolute inset-0" />,
 });
 
 const primaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-blue bg-blue px-5 text-[13px] font-semibold text-white shadow-[0_0_28px_rgba(8,127,255,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff]";
+  "inline-flex min-h-13 items-center justify-center gap-2.5 rounded-md border border-[#53d7ff]/45 bg-[#087fff] px-6 text-[14px] font-semibold text-white shadow-[0_10px_36px_rgba(8,127,255,0.24)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff] hover:shadow-[0_12px_42px_rgba(8,127,255,0.38)]";
 const secondaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 rounded-md border border-white/10 bg-white/[0.025] px-5 text-[13px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:border-blue/60";
-const eyebrow = "inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#aeb7c7]";
+  "inline-flex min-h-13 items-center justify-center gap-2.5 rounded-md border border-white/15 bg-white/[0.035] px-6 text-[14px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:border-[#ff28b9]/65 hover:bg-[#ff28b9]/[0.07]";
 
-export default function Hero() {
-  const sectionRef = useRef<HTMLElement | null>(null);
+const servicePhrases = [
+  "Digital products",
+  "Intelligent software",
+  "Connected experiences",
+];
+
+function TypewriterPhrase({ reduceMotion }: { reduceMotion: boolean }) {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayedPhrase, setDisplayedPhrase] = useState(servicePhrases[0]);
+  const [deleting, setDeleting] = useState(false);
+  const targetPhrase = servicePhrases[phraseIndex];
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    if (reduceMotion) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const media = gsap.matchMedia();
-    const context = gsap.context(() => {
-      if (reduceMotion) return;
-
-      const createSequence = (pinVisual: boolean) => {
-        const visual = section.querySelector<HTMLElement>(".hero-visual");
-        if (!visual) return;
-
-        gsap.fromTo(
-          ".hero-copy > *",
-          { y: 24, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.07, ease: "power3.out" }
-        );
-        gsap.fromTo(
-          ".hero-visual",
-          { y: 18, opacity: 0, scale: 0.97 },
-          { y: 0, opacity: 1, scale: 1, duration: 1, ease: "power3.out", delay: 0.1 }
-        );
-
-        if (pinVisual) {
-          ScrollTrigger.create({
-            trigger: section,
-            start: "top top",
-            end: () =>
-              `+=${Math.max(1, section.clientHeight - visual.offsetTop - visual.offsetHeight - 24)}`,
-            pin: visual,
-            pinSpacing: false,
-            invalidateOnRefresh: true,
-          });
-        }
-
-        const transition = gsap.timeline({
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        transition
-          .to(".hero-visual", {
-            yPercent: -5,
-            rotation: 2,
-            scale: 0.94,
-            duration: 0.8,
-            ease: "none",
-          })
-          .to(".hero-visual", {
-            opacity: 0,
-            scale: 0.9,
-            duration: 0.52,
-            ease: "none",
-          }, 0.28);
-
-        gsap.to(".hero-bottom-line", {
-          y: -10,
-          opacity: 0.7,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        });
-      };
-
-      media.add("(min-width: 768px)", () => createSequence(true));
-      media.add("(max-width: 767px)", () => createSequence(false));
-    }, section);
+    let timeout: number | undefined;
+    if (!deleting && displayedPhrase === targetPhrase) {
+      timeout = window.setTimeout(() => setDeleting(true), 1500);
+    } else if (deleting && displayedPhrase.length <= 1) {
+      timeout = window.setTimeout(() => {
+        setDisplayedPhrase("");
+        setPhraseIndex((index) => (index + 1) % servicePhrases.length);
+        setDeleting(false);
+      }, 34);
+    } else if (deleting) {
+      timeout = window.setTimeout(
+        () => setDisplayedPhrase((current) => current.slice(0, -1)),
+        34
+      );
+    } else {
+      timeout = window.setTimeout(
+        () => setDisplayedPhrase(targetPhrase.slice(0, displayedPhrase.length + 1)),
+        68
+      );
+    }
 
     return () => {
-      media.revert();
-      context.revert();
+      if (timeout !== undefined) window.clearTimeout(timeout);
     };
-  }, []);
+  }, [deleting, displayedPhrase, reduceMotion, targetPhrase]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative isolate mx-auto grid min-h-[max(680px,calc(100svh-76px))] w-full max-w-[1320px] grid-cols-1 items-center gap-5 overflow-hidden px-5 pb-24 pt-14 sm:px-8 md:grid-cols-[1.02fr_0.98fr] md:gap-0"
-    >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_38%,rgba(8,127,255,0.12),transparent_35%),radial-gradient(ellipse_at_20%_14%,rgba(198,167,106,0.035),transparent_28%)]" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[55%] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.012))]" />
+    <span className="mt-3 block min-h-[1.7em] text-[16px] font-medium text-white sm:text-[18px]">
+      <span className="sr-only">
+        Digital products, Intelligent software, Connected experiences
+      </span>
+      <span aria-hidden="true" className="text-[#53d7ff]">
+        {reduceMotion ? servicePhrases[0] : displayedPhrase}
+        {!reduceMotion && !deleting && displayedPhrase !== targetPhrase && (
+          <span className="ml-1 inline-block h-[1em] w-px translate-y-[0.12em] animate-pulse bg-[#ff28b9]" />
+        )}
+      </span>
+    </span>
+  );
+}
 
-      <div className="hero-copy relative z-[2] pb-5">
-        <div className={eyebrow}>
-          <span className="size-[7px] rounded-full bg-[#c6a76a]" />
-          SOFTWARE · DIGITAL PRODUCTS · ENGINEERING
+export default function Hero() {
+  const reduceMotion = useReducedMotion();
+  const enter = (delay: number) =>
+    reduceMotion
+      ? undefined
+      : {
+          initial: { opacity: 1, y: 22 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
+
+  return (
+    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070812]">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_77%_40%,rgba(8,127,255,0.22),transparent_36%),radial-gradient(ellipse_at_88%_56%,rgba(255,40,185,0.14),transparent_34%),radial-gradient(ellipse_at_8%_100%,rgba(139,46,255,0.12),transparent_40%),linear-gradient(110deg,#070812_12%,#0b0c1a_56%,#0b0a18_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-30 [background-image:linear-gradient(rgba(173,191,232,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(173,191,232,0.08)_1px,transparent_1px)] [background-size:74px_74px] [mask-image:radial-gradient(ellipse_at_62%_46%,black,transparent_72%)]" />
+      <div className="mx-auto grid min-h-0 w-full max-w-[1400px] grid-cols-1 items-center gap-3 px-5 pb-10 pt-10 sm:px-8 sm:pb-12 md:min-h-[min(860px,calc(100svh-82px))] md:grid-cols-[1fr_1.08fr] md:gap-1 md:py-14 lg:gap-4 lg:px-12">
+        <div className="relative z-10 max-w-[690px] py-5 md:py-8">
+          <motion.div
+            {...enter(0)}
+            className="inline-flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b0b7ca] sm:text-[11px]"
+          >
+            <span className="relative grid size-2 place-items-center rounded-full bg-[#53d7ff] shadow-[0_0_16px_rgba(83,215,255,0.8)]">
+              <span className="absolute size-4 rounded-full border border-[#53d7ff]/40" />
+            </span>
+            INDEPENDENT DIGITAL ENGINEERING STUDIO
+          </motion.div>
+
+          <motion.h1
+            {...enter(0.1)}
+            className="my-6 max-w-[760px] text-[clamp(48px,12vw,68px)] font-semibold leading-[0.9] tracking-[-0.075em] sm:my-8 sm:text-[clamp(56px,8.25vw,82px)] md:text-[clamp(62px,7.25vw,106px)] lg:text-[112px]"
+          >
+            Engineering
+            <br />
+            ideas into
+            <br />
+            <span className="bg-gradient-to-r from-[#53d7ff] via-[#087fff] to-[#ff28b9] bg-clip-text pr-[0.08em] text-transparent">
+              reality.
+            </span>
+          </motion.h1>
+
+          <motion.p
+            {...enter(0.2)}
+            className="max-w-[460px] text-[16px] leading-[1.8] text-[#b0b7ca] sm:text-[17px]"
+          >
+            We build digital products, software, and connected experiences that
+            make ambitious ideas useful in the real world.
+            <TypewriterPhrase reduceMotion={Boolean(reduceMotion)} />
+          </motion.p>
+
+          <motion.div {...enter(0.3)} className="mt-8 flex flex-wrap gap-3">
+            <Link className={primaryButton} href="/contact">
+              Start a project <ArrowUpRight size={17} aria-hidden="true" />
+            </Link>
+            <Link className={secondaryButton} href="/services">
+              Explore services
+            </Link>
+          </motion.div>
+
+          <motion.a
+            {...enter(0.4)}
+            href="#connected-experiences"
+            className="mt-10 inline-flex items-center gap-2.5 text-[12px] text-[#9aa4bb] transition-colors hover:text-white md:mt-14"
+          >
+            <ArrowDown size={15} className="text-blue" aria-hidden="true" />
+            Scroll to explore
+          </motion.a>
         </div>
 
-        <h1 className="my-6 text-[clamp(52px,7.2vw,88px)] font-semibold leading-[0.99] tracking-[-0.065em]">
-          Engineering
-          <br />
-          ideas into
-          <br />
-          <span className="bg-gradient-to-r from-[#65b7ff] via-blue to-[#a5d6ff] bg-clip-text text-transparent">reality.</span>
-        </h1>
-
-        <p className="max-w-[445px] text-[15px] leading-[1.9] text-muted">
-          We design and build software, digital products, and connected
-          experiences that help businesses work through complex challenges.
-        </p>
-
-        <div className="mt-7 flex flex-wrap gap-3">
-          <a className={primaryButton} href="#services">
-            Explore our services <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-          <Link className={secondaryButton} href="/contact">Start a project</Link>
-        </div>
-
-        <a href="#services" className="mt-9 inline-flex items-center gap-2.5 text-[11px] text-[#818a99] md:mt-14">
-          <ArrowDown size={15} className="text-blue" aria-hidden="true" /> Scroll to explore
-        </a>
+        <motion.div
+          {...(reduceMotion
+            ? {}
+            : {
+                initial: { opacity: 1, scale: 0.96, y: 12 },
+                animate: { opacity: 1, scale: 1, y: 0 },
+                transition: { duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] },
+              })}
+          className="relative mx-auto hidden w-full max-w-[620px] md:block md:max-w-none"
+        >
+          <div className="pointer-events-none absolute inset-[8%] rounded-full border border-[#53d7ff]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(-25deg)]" />
+          <div className="pointer-events-none absolute inset-[16%] rounded-full border border-[#ff28b9]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(35deg)]" />
+          <div className="pointer-events-none absolute left-[15%] top-[18%] size-2 rounded-full bg-[#53d7ff] shadow-[0_0_20px_5px_rgba(83,215,255,0.5)]" />
+          <div className="pointer-events-none absolute right-[16%] top-[27%] size-1.5 rounded-full bg-[#ff28b9] shadow-[0_0_18px_5px_rgba(255,40,185,0.5)]" />
+          <div className="pointer-events-none absolute bottom-[19%] left-[19%] size-1.5 rounded-full bg-white/90 shadow-[0_0_16px_4px_rgba(83,215,255,0.38)]" />
+          <AssetFrame
+            asset={siteImages.homepageCrystal}
+            className="relative aspect-square w-full"
+            sizes="(max-width: 768px) 92vw, 48vw"
+            fallback={
+              <div className="absolute inset-0">
+                <div className="absolute inset-[15%] rounded-full bg-blue/10 blur-3xl" />
+                <HeroScene />
+              </div>
+            }
+          />
+          <div className="absolute bottom-[6%] right-[4%] z-[3] flex max-w-[90%] flex-col items-end gap-1.5 text-right">
+            <span className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#53d7ff]">
+              <span className="size-1.5 rounded-full bg-[#ff28b9]" />
+              Form follows function
+            </span>
+            <span className="text-[11px] text-[#b0b7ca] md:text-[12px]">
+              Connected ideas, engineered into products.
+            </span>
+          </div>
+          <div className="absolute left-[4%] top-[18%] z-[3] hidden border-l border-[#53d7ff]/45 pl-3 text-[9px] leading-[1.8] tracking-[0.1em] text-[#aab5cb] sm:block">
+            <span className="block text-[#53d7ff]">01 / BUILD</span>
+            PRODUCT SYSTEMS
+          </div>
+        </motion.div>
       </div>
 
-      <div className="hero-visual relative grid min-h-[340px] min-w-0 place-items-center md:min-h-[480px]">
-        <div className="pointer-events-none absolute aspect-square w-[min(90%,440px)] rounded-full border border-blue/20 [transform:perspective(600px)_rotateX(68deg)_rotate(-25deg)] max-md:hidden" />
-        <div className="pointer-events-none absolute aspect-square w-[min(72%,350px)] rounded-full border border-white/10 [transform:perspective(600px)_rotateX(68deg)_rotate(35deg)] max-md:hidden" />
-        <HeroScene />
-        <p className="absolute bottom-0 right-[3%] z-[3] flex max-w-[90%] items-center gap-2.5 text-[11px] text-[#aeb8c8] md:text-[12px]">
-          <span className="size-1.5 shrink-0 rounded-full bg-blue" />
-          Connected ideas, engineered into products.
-        </p>
-      </div>
-
-      <div className="hero-bottom-line absolute bottom-5 left-5 right-5 flex justify-between gap-4 border-t border-white/10 pt-4 text-[8px] tracking-[0.12em] text-[#707a8a] sm:left-8 sm:right-8 md:text-[9px]">
+      <div className="mx-auto flex w-full max-w-[1320px] justify-between gap-4 border-t border-white/10 px-5 py-4 text-[8px] tracking-[0.12em] text-[#8690a8] sm:px-8 md:text-[9px]">
         <span>INDEPENDENT TECHNOLOGY STUDIO</span>
         <span>IDEAS → PRODUCTS → IMPACT</span>
       </div>

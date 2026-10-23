@@ -95,13 +95,13 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="border border-white/10 bg-[#10141d]/90 p-5 sm:p-6" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="border border-white/10 bg-[#101020]/95 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.2)] sm:p-7" onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex min-w-0 flex-col gap-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="name">Name</label>
           <input
             id="name"
-            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+            className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("name")}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "name-error" : undefined}
@@ -116,7 +116,7 @@ export default function ContactForm() {
           <input
             id="email"
             type="email"
-            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+            className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("email")}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
@@ -128,14 +128,14 @@ export default function ContactForm() {
 
         <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="company">Company or project name (optional)</label>
-          <input id="company" className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("company")} />
+          <input id="company" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("company")} />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="service">Service of interest</label>
           <select
             id="service"
-            className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+            className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("service")}
             aria-invalid={!!errors.service}
             aria-describedby={errors.service ? "service-error" : undefined}
@@ -152,7 +152,7 @@ export default function ContactForm() {
 
         <div className="flex min-w-0 flex-col gap-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="budget">Project budget (optional)</label>
-          <input id="budget" className="min-h-[54px] w-full border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("budget")} />
+          <input id="budget" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("budget")} />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
@@ -160,7 +160,7 @@ export default function ContactForm() {
           <textarea
             id="projectDescription"
             rows={6}
-            className="min-h-[150px] w-full resize-y border border-white/15 bg-[#070a0e] px-4 py-3 text-[16px] leading-[1.6] text-white focus:border-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+            className="min-h-[150px] w-full resize-y border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] leading-[1.6] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
             {...register("projectDescription")}
             aria-invalid={!!errors.projectDescription}
             aria-describedby={

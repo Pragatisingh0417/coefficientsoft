@@ -16,14 +16,15 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="mx-auto w-full max-w-[1320px] px-5 py-20 sm:px-8 md:py-32"
+      className="relative isolate mx-auto w-full max-w-[1320px] overflow-hidden px-5 py-20 sm:px-8 md:py-32"
     >
+      <div className="pointer-events-none absolute inset-x-0 top-16 -z-10 h-96 bg-[radial-gradient(ellipse_at_18%_42%,rgba(8,127,255,0.09),transparent_48%),radial-gradient(ellipse_at_82%_54%,rgba(139,46,255,0.08),transparent_45%)]" />
       <div
         className="mb-9 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-11"
         data-reveal
       >
         <div>
-          <span className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#c6a76a]">
+          <span className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">
             WHAT WE DO
           </span>
           <h2 className="mb-0 mt-4 text-[clamp(40px,5vw,65px)] leading-[1.06] tracking-[-0.055em]">
@@ -32,7 +33,7 @@ export default function Services() {
             <span className="text-[#707988]">good ideas forward.</span>
           </h2>
         </div>
-        <p className="mb-1 max-w-[355px] text-[14px] leading-[1.9] text-muted">
+        <p className="mb-1 max-w-[355px] text-[15px] leading-[1.9] text-muted">
           From product engineering to digital growth, choose the support that fits
           the work in front of you.
         </p>
@@ -44,12 +45,12 @@ export default function Services() {
           const art = (
             <AssetFrame
               asset={image}
-              className={`relative aspect-[3/2] w-full overflow-hidden border border-white/10 bg-[#0d1119] transition-colors duration-300 group-hover:border-blue/45 ${horizontal ? "lg:aspect-[16/7]" : ""}`}
+              className={`relative aspect-[3/2] w-full overflow-hidden border border-white/10 bg-[#101020] transition duration-500 group-hover:border-[#53d7ff]/45 group-hover:shadow-[0_14px_55px_rgba(8,127,255,0.1)] ${horizontal ? "lg:aspect-[16/7]" : ""}`}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 38vw"
               fallback={
-                <div className="absolute inset-0 grid place-items-center bg-[#0d1119]">
-                  <span className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(8,127,255,0.12),transparent_60%)]" />
-                  <span className="relative grid size-14 place-items-center border border-blue/35 text-blue">
+                <div className="absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_42%_48%,rgba(8,127,255,0.18),transparent_55%),linear-gradient(140deg,#14172c,#0b0d19_70%)]">
+                  <span className="absolute inset-[12%] border border-white/[0.06]" />
+                  <span className="relative grid size-14 place-items-center border border-[#53d7ff]/40 bg-[#087fff]/[0.06] text-[#53d7ff]">
                     <Icon size={26} strokeWidth={1.4} aria-hidden="true" />
                   </span>
                 </div>
@@ -71,7 +72,7 @@ export default function Services() {
                 {art}
                 <div className="mt-5 flex items-start justify-between gap-5">
                   <div>
-                    <span className="text-[10px] font-semibold tracking-[0.15em] text-[#c6a76a]">
+                    <span className="text-[10px] font-semibold tracking-[0.15em] text-[#53d7ff]">
                       {number} / SERVICE
                     </span>
                     <h3 className="mb-2 mt-2.5 max-w-[420px] text-[21px] font-medium leading-[1.2] tracking-[-0.035em] transition-colors group-hover:text-[#a8d2ff]">
@@ -81,7 +82,7 @@ export default function Services() {
                       {summary}
                     </p>
                   </div>
-                  <span className="mt-1 grid size-9 shrink-0 place-items-center border border-white/15 text-[#c6a76a] transition-colors group-hover:border-blue/50 group-hover:text-blue">
+                  <span className="mt-1 grid size-9 shrink-0 place-items-center border border-white/15 text-[#b0b7ca] transition-colors group-hover:border-[#ff28b9]/50 group-hover:text-[#ff28b9]">
                     <ArrowUpRight size={17} aria-hidden="true" />
                   </span>
                 </div>

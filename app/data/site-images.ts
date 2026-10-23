@@ -6,6 +6,36 @@ export type SiteImage = {
 };
 
 export const siteImages = {
+  homepageCrystal: {
+    src: null,
+    filename: "home/crystal-artwork.webp",
+    alt: "A clean, faceted blue crystal artwork with no embedded text or interface",
+    aspectRatio: "1 / 1",
+  },
+  servicesHeroArtwork: {
+    src: null,
+    filename: "services/website-development.jpg",
+    alt: "Cinematic crystal artwork with illuminated fragments against a dark blue-violet atmosphere",
+    aspectRatio: "16 / 9",
+  },
+  homepageNetwork: {
+    src: null,
+    filename: "home/network-background.webp",
+    alt: "",
+    aspectRatio: "16 / 9",
+  },
+  homepageTechnology: {
+    src: null,
+    filename: "about/liquid-sphere.webp",
+    alt: "A blue liquid sphere representing an inventive, connected approach to engineering",
+    aspectRatio: "16 / 9",
+  },
+  aboutSphere: {
+    src: null,
+    filename: "about/liquid-sphere.webp",
+    alt: "A blue liquid sphere representing an inventive, connected approach to engineering",
+    aspectRatio: "4 / 3",
+  },
   homepageProduct: {
     src: "/images/projects/product-interface-capability.svg",
     filename: "projects/product-interface-capability.svg",

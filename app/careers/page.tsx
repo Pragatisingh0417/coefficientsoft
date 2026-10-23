@@ -79,7 +79,7 @@ export default function CareersPage() {
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[#0a0d13] py-20 md:py-28">
+        <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_12%_24%,rgba(255,40,185,0.09),transparent_38%),#101020] py-20 md:py-28">
           <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
             <div className="mb-9 grid grid-cols-1 gap-5 md:mb-12 md:grid-cols-[1fr_0.65fr] md:items-end md:gap-12" data-reveal>
               <div>
@@ -100,7 +100,7 @@ export default function CareersPage() {
             <div className="grid grid-cols-1 border-t border-white/10 md:grid-cols-3 md:border-t-0">
               {principles.map(({ number, title, description, icon: Icon }) => (
                 <article className="grid grid-cols-[52px_1fr] gap-4 border-b border-white/10 py-6 first:pt-6 md:min-h-[250px] md:block md:border-l md:border-t md:px-6 md:py-7 md:first:border-l-0 md:first:pl-0" key={number} data-reveal>
-                  <span className="grid size-11 place-items-center border border-blue/40 bg-blue/[0.08] text-[#78b7ff] md:mb-8">
+                  <span className="grid size-11 place-items-center border border-[#53d7ff]/40 bg-blue/[0.08] text-[#53d7ff] md:mb-8">
                     <Icon size={22} aria-hidden="true" />
                   </span>
                   <div>
@@ -153,8 +153,8 @@ export default function CareersPage() {
               )}
             </div>
 
-            <aside className="relative flex flex-col justify-between overflow-hidden border border-blue/25 bg-[#0d1420] p-6 sm:p-8 md:min-h-[320px]" data-reveal>
-              <div className="absolute -right-20 -top-20 size-72 rounded-full border border-blue/15" aria-hidden="true" />
+            <aside className="relative flex flex-col justify-between overflow-hidden border border-[#53d7ff]/25 bg-[radial-gradient(ellipse_at_82%_18%,rgba(139,46,255,0.16),transparent_42%),#101020] p-6 sm:p-8 md:min-h-[320px]" data-reveal>
+              <div className="absolute -right-20 -top-20 size-72 rounded-full border border-[#ff28b9]/20" aria-hidden="true" />
               <div className="relative">
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#78b7ff]">
                   OPEN APPLICATION

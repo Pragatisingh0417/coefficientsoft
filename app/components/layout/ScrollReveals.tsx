@@ -23,6 +23,7 @@ export default function ScrollReveals() {
             opacity: 1,
             duration: 0.75,
             ease: "power2.out",
+            immediateRender: false,
             scrollTrigger: {
               trigger: element,
               start: "top 88%",

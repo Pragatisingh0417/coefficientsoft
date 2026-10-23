@@ -1,164 +1,122 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
+import AssetFrame from "../layout/AssetFrame";
+import { siteImages } from "../../data/site-images";
 
-const connections = [
-  "M92 302 C205 300 196 132 338 134",
-  "M92 302 C220 302 224 300 378 300",
-  "M92 302 C205 304 196 470 338 468",
-  "M908 302 C788 300 812 132 662 134",
-  "M908 302 C790 302 775 300 622 300",
-  "M908 302 C788 304 812 470 662 468",
-  "M338 134 C416 134 420 220 472 244",
-  "M338 468 C416 468 420 382 472 358",
-  "M662 134 C584 134 580 220 528 244",
-  "M662 468 C584 468 580 382 528 358",
-  "M378 300 C428 300 432 300 472 300",
-  "M622 300 C572 300 568 300 528 300",
-];
-
-const stations = [
-  { x: 92, y: 302, label: "PEOPLE" },
-  { x: 338, y: 134, label: "PRODUCT" },
-  { x: 338, y: 468, label: "DATA" },
-  { x: 662, y: 134, label: "PLATFORMS" },
-  { x: 662, y: 468, label: "SYSTEMS" },
-  { x: 908, y: 302, label: "CUSTOMERS" },
-];
+function NetworkArtwork() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="absolute inset-0 h-full w-full"
+      viewBox="0 0 1000 760"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+    >
+      <defs>
+        <radialGradient id="network-glow">
+          <stop stopColor="#087FFF" stopOpacity=".32" />
+          <stop offset="1" stopColor="#087FFF" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="network-line" x1="180" y1="80" x2="810" y2="650">
+          <stop stopColor="#53D7FF" stopOpacity=".7" />
+          <stop offset=".52" stopColor="#8B2EFF" stopOpacity=".46" />
+          <stop offset="1" stopColor="#FF28B9" stopOpacity=".72" />
+        </linearGradient>
+      </defs>
+      <path fill="#0B1020" d="M0 0h1000v760H0z" />
+      <path fill="url(#network-glow)" d="M0 0h1000v760H0z" />
+      <path
+        d="M146 150 360 270l-16 214-201 126m711-460L640 270l16 214 201 126M360 270l140 92 140-92M344 484l156-122 156 122M500 140v222m0 0v236"
+        stroke="url(#network-line)"
+        strokeWidth="2"
+      />
+      <path
+        d="m146 150 354 212 354-212M159 610l341-248 341 248"
+        stroke="#A8B8D1"
+        strokeOpacity=".18"
+        strokeDasharray="5 12"
+      />
+      <circle cx="500" cy="362" r="197" fill="url(#network-glow)" />
+      <circle cx="500" cy="362" r="114" fill="#101528" stroke="#53D7FF" strokeOpacity=".72" />
+      <circle cx="500" cy="362" r="91" stroke="#FF28B9" strokeOpacity=".5" />
+      <circle cx="500" cy="362" r="67" stroke="#53D7FF" strokeOpacity=".35" strokeDasharray="3 9" />
+      <path d="M478 362h44m-22-22v44" stroke="#EAF6FF" strokeLinecap="round" strokeWidth="3" />
+      {[
+        [146, 150],
+        [854, 150],
+        [159, 610],
+        [841, 610],
+        [500, 140],
+        [500, 584],
+        [360, 270],
+        [640, 270],
+        [344, 484],
+        [656, 484],
+      ].map(([cx, cy], index) => (
+        <g key={`${cx}-${cy}`}>
+          <circle
+            cx={cx}
+            cy={cy}
+            r={index < 4 ? 11 : 8}
+            fill={index % 3 === 0 ? "#FF28B9" : "#53D7FF"}
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={index < 4 ? 24 : 19}
+            stroke={index % 3 === 0 ? "#FF28B9" : "#53D7FF"}
+            strokeOpacity=".36"
+          />
+        </g>
+      ))}
+    </svg>
+  );
+}
 
 export default function NetworkStory() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <section className="overflow-hidden border-y border-white/10 bg-[#0d1119]">
-      <div className="mx-auto grid w-full max-w-[1320px] grid-cols-1 items-center gap-10 px-5 py-20 sm:px-8 md:gap-16 md:py-28 lg:grid-cols-[0.72fr_1.28fr]">
-        <div data-reveal>
-          <span className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#c6a76a]">
+    <section
+      id="connected-experiences"
+      className="relative isolate overflow-hidden border-y border-white/10 bg-[#0b0c19]"
+    >
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_50%,rgba(8,127,255,0.1),transparent_40%),radial-gradient(ellipse_at_95%_55%,rgba(255,40,185,0.08),transparent_35%)]" />
+      <div className="mx-auto grid w-full max-w-[1320px] grid-cols-1 items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:py-28">
+        <div className="max-w-[540px]" data-reveal>
+          <span className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">
+            <span className="size-1.5 rounded-full bg-[#ff28b9]" />
             CONNECTED BY DESIGN
           </span>
-          <h2 className="mb-0 mt-5 text-[clamp(38px,4.7vw,60px)] leading-[1.04] tracking-[-0.06em]">
-            Better digital
-            <br />
-            <span className="text-[#7b8798]">work works together.</span>
+          <h2 className="mb-0 mt-5 text-[clamp(40px,5.5vw,68px)] leading-[1.01] tracking-[-0.065em]">
+            Better digital experiences start with{" "}
+            <span className="bg-gradient-to-r from-[#53d7ff] to-[#ff28b9] bg-clip-text text-transparent">
+              better connections.
+            </span>
           </h2>
-          <p className="mb-0 mt-5 max-w-[390px] text-[14px] leading-[1.9] text-muted">
-            Products, people, data, and platforms are connected. We help make
-            those connections easier to understand, use, and improve.
+          <p className="mb-0 mt-6 max-w-[430px] text-[15px] leading-[1.9] text-[#c0c7d7]">
+            Products, people, data, and platforms are connected. We bring them
+            together to make digital experiences clearer, more useful, and ready
+            to grow.
           </p>
           <Link
-            className="mt-7 inline-flex items-center gap-2 border-b border-blue/60 pb-1.5 text-[12px] font-medium text-[#e1e9f4] transition-colors hover:border-[#c6a76a] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue"
+            className="mt-7 inline-flex min-h-11 items-center gap-2 border-b border-[#53d7ff]/55 pb-1.5 text-[13px] font-medium text-[#e1e9f4] transition-colors hover:border-[#ff28b9] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue"
             href="/services#custom-software-integrations"
           >
             Explore connected systems <span aria-hidden="true">↗</span>
           </Link>
         </div>
 
-        <div
-          className="relative min-h-[290px] border-y border-white/10 bg-[radial-gradient(ellipse_at_50%_50%,rgba(8,127,255,0.12),transparent_52%),linear-gradient(110deg,rgba(8,127,255,0.025),transparent_48%,rgba(198,167,106,0.025))] sm:min-h-[390px]"
-          aria-label="Animated illustration of people, products, data, platforms, and systems connected"
-          role="img"
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_78%)]" />
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 600"
-            fill="none"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid meet"
-          >
-            <defs>
-              <radialGradient id="network-core">
-                <stop stopColor="#087FFF" stopOpacity="0.34" />
-                <stop offset="1" stopColor="#087FFF" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <circle cx="500" cy="300" r="175" fill="url(#network-core)" />
-            {connections.map((path, index) => (
-              <motion.path
-                key={path}
-                d={path}
-                stroke={index === 7 || index === 8 ? "#C6A76A" : "#398FE2"}
-                strokeOpacity="0.38"
-                strokeWidth="1.15"
-                initial={false}
-                animate={
-                  reduceMotion
-                    ? { strokeOpacity: 0.38 }
-                    : { strokeOpacity: [0.2, 0.72, 0.2], pathLength: [0.82, 1, 0.82] }
-                }
-                transition={{
-                  duration: 5.5 + (index % 4) * 0.9,
-                  delay: index * 0.12,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-            <circle
-              cx="500"
-              cy="300"
-              r="57"
-              fill="#080A0F"
-              stroke="#78B7FF"
-              strokeOpacity="0.75"
-            />
-            <circle cx="500" cy="300" r="44" stroke="#78B7FF" strokeOpacity="0.2" />
-            <text
-              x="500"
-              y="318"
-              fill="#F5F7FB"
-              fontSize="48"
-              fontWeight="600"
-              letterSpacing="-5"
-              textAnchor="middle"
-              className="font-sans"
-            >
-              C
-            </text>
-            {stations.map(({ x, y, label }, index) => (
-              <g key={label}>
-                <motion.circle
-                  cx={x}
-                  cy={y}
-                  r="7"
-                  fill={index === 2 ? "#C6A76A" : "#78B7FF"}
-                  animate={
-                    reduceMotion
-                      ? { opacity: 1 }
-                      : { opacity: [0.55, 1, 0.55], scale: [0.82, 1.12, 0.82] }
-                  }
-                  transition={{
-                    duration: 3.8 + index * 0.35,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.22,
-                  }}
-                />
-                <circle
-                  cx={x}
-                  cy={y}
-                  r="14"
-                  stroke={index === 2 ? "#C6A76A" : "#78B7FF"}
-                  strokeOpacity="0.32"
-                />
-                <text
-                  x={x}
-                  y={y + (y < 300 ? -25 : 34)}
-                  fill="#B9C6D8"
-                  fontSize="11"
-                  letterSpacing="2"
-                  textAnchor="middle"
-                  className="font-sans"
-                >
-                  {label}
-                </text>
-              </g>
-            ))}
-          </svg>
-          <div className="absolute bottom-3 left-0 right-0 flex justify-between text-[8px] tracking-[0.16em] text-[#79889d] sm:bottom-4 sm:text-[9px]">
-            <span>FROM DISCOVERY</span>
-            <span>TO USEFUL OUTCOMES</span>
+        <div className="relative" data-reveal>
+          <AssetFrame
+            asset={siteImages.homepageNetwork}
+            className="relative aspect-[4/3] min-h-[290px] w-full border border-white/10 bg-[#0d1119] shadow-[0_30px_100px_rgba(0,0,0,0.3)] sm:min-h-[380px]"
+            sizes="(max-width: 1024px) 100vw, 58vw"
+            fallback={<NetworkArtwork />}
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,18,0.08),rgba(7,8,18,0.45)),linear-gradient(90deg,rgba(7,8,18,0.1),transparent_45%,rgba(7,8,18,0.16))]" />
+          <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex items-center justify-between border-t border-white/15 pt-3 text-[8px] font-medium tracking-[0.13em] text-[#c4cee0] sm:bottom-5 sm:left-5 sm:right-5 sm:text-[9px]">
+            <span>PEOPLE · PRODUCTS · SYSTEMS</span>
+            <span className="text-[#53d7ff]">CONNECTED, BY DESIGN</span>
           </div>
         </div>
       </div>

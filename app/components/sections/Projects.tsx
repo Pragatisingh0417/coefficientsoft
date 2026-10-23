@@ -35,14 +35,14 @@ const capabilities = [
 
 export default function Projects() {
   return (
-    <section id="work" className="border-y border-white/10 bg-[#0a0d13] py-20 md:py-32">
+    <section id="work" className="border-y border-white/10 bg-[linear-gradient(135deg,#0c0d1c,#101020_54%,#0a0b18)] py-20 md:py-32">
       <div className="mx-auto w-full max-w-[1320px] px-5 sm:px-8">
         <div
           className="mb-9 flex flex-col gap-5 md:mb-14 md:flex-row md:items-end md:justify-between md:gap-11"
           data-reveal
         >
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c6a76a]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ff55c7]">
               CAPABILITIES
             </span>
             <h2 className="mb-0 mt-4 text-[clamp(40px,5vw,65px)] leading-[1.06] tracking-[-0.055em]">
@@ -74,7 +74,7 @@ export default function Projects() {
               />
               <div className="flex flex-col gap-3 pt-5 sm:flex-row sm:items-start sm:justify-between sm:gap-7">
                 <div>
-                  <span className="text-[10px] font-semibold tracking-[0.15em] text-[#c6a76a]">
+                  <span className="text-[10px] font-semibold tracking-[0.15em] text-[#53d7ff]">
                     {number} / {label}
                   </span>
                   <h3 className="mb-2 mt-2.5 max-w-[460px] text-[clamp(22px,2.5vw,29px)] leading-[1.2] tracking-[-0.04em]">

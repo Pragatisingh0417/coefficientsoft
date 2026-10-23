@@ -11,7 +11,7 @@ export default function Testimonials() {
           data-reveal
         >
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c6a76a]">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">
               CLIENT PERSPECTIVES
             </span>
             <h2 className="mb-0 mt-4 text-[clamp(40px,5vw,65px)] leading-[1.06] tracking-[-0.055em]">
@@ -32,7 +32,7 @@ export default function Testimonials() {
             data-testid="testimonials-empty-state"
             data-reveal
           >
-            <span className="grid size-11 place-items-center border border-[#c6a76a]/45 text-[#c6a76a] md:size-14">
+            <span className="grid size-11 place-items-center border border-[#ff28b9]/45 text-[#ff55c7] md:size-14">
               <Quote size={22} strokeWidth={1.4} aria-hidden="true" />
             </span>
             <div>
@@ -57,7 +57,7 @@ export default function Testimonials() {
               const context = [role, company].filter(Boolean).join(" · ");
               return (
                 <figure
-                  className="m-0 border-l border-[#c6a76a]/60 pl-6 md:pl-8"
+                  className="m-0 border-l border-[#ff28b9]/60 pl-6 md:pl-8"
                   key={id}
                   data-reveal
                 >
