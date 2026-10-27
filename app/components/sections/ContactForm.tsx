@@ -31,7 +31,11 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 type SubmissionFeedback = { tone: "success" | "error"; message: string };
 
-export default function ContactForm() {
+export default function ContactForm({
+  defaultService = "",
+}: {
+  defaultService?: string;
+}) {
   const [feedback, setFeedback] = useState<SubmissionFeedback | null>(null);
   const {
     register,
@@ -43,6 +47,7 @@ export default function ContactForm() {
     defaultValues: {
       company: "",
       budget: "",
+      service: defaultService,
     },
   });
 

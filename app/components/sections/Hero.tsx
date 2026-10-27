@@ -5,8 +5,6 @@ import dynamic from "next/dynamic";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import AssetFrame from "../layout/AssetFrame";
-import { siteImages } from "../../data/site-images";
 
 const HeroScene = dynamic(() => import("../three/HeroScene"), {
   ssr: false,
@@ -86,10 +84,10 @@ export default function Hero() {
         };
 
   return (
-    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#070812]">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_77%_40%,rgba(8,127,255,0.22),transparent_36%),radial-gradient(ellipse_at_88%_56%,rgba(255,40,185,0.14),transparent_34%),radial-gradient(ellipse_at_8%_100%,rgba(139,46,255,0.12),transparent_40%),linear-gradient(110deg,#070812_12%,#0b0c1a_56%,#0b0a18_100%)]" />
+    <section id="home-hero" className="relative isolate overflow-hidden border-b border-white/10 bg-transparent">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-60 bg-[radial-gradient(ellipse_at_77%_40%,rgba(8,127,255,0.22),transparent_36%),radial-gradient(ellipse_at_88%_56%,rgba(255,40,185,0.14),transparent_34%),radial-gradient(ellipse_at_8%_100%,rgba(139,46,255,0.12),transparent_40%),linear-gradient(110deg,rgba(7,8,18,0.9)_12%,rgba(11,12,26,0.72)_56%,rgba(11,10,24,0.68)_100%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-30 [background-image:linear-gradient(rgba(173,191,232,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(173,191,232,0.08)_1px,transparent_1px)] [background-size:74px_74px] [mask-image:radial-gradient(ellipse_at_62%_46%,black,transparent_72%)]" />
-      <div className="mx-auto grid min-h-0 w-full max-w-[1400px] grid-cols-1 items-center gap-3 px-5 pb-10 pt-10 sm:px-8 sm:pb-12 md:min-h-[min(860px,calc(100svh-82px))] md:grid-cols-[1fr_1.08fr] md:gap-1 md:py-14 lg:gap-4 lg:px-12">
+      <div className="relative z-10 mx-auto grid min-h-0 w-full max-w-[1400px] grid-cols-1 items-center gap-3 px-5 pb-10 pt-10 sm:px-8 sm:pb-12 md:min-h-[min(860px,calc(100svh-82px))] md:grid-cols-[1fr_1.08fr] md:gap-1 md:py-14 lg:gap-4 lg:px-12">
         <div className="relative z-10 max-w-[690px] py-5 md:py-8">
           <motion.div
             {...enter(0)}
@@ -150,24 +148,17 @@ export default function Hero() {
                 animate: { opacity: 1, scale: 1, y: 0 },
                 transition: { duration: 1, delay: 0.18, ease: [0.22, 1, 0.36, 1] },
               })}
-          className="relative mx-auto hidden w-full max-w-[620px] md:block md:max-w-none"
+          className="relative z-10 mx-auto block w-full max-w-[370px] md:max-w-none"
         >
-          <div className="pointer-events-none absolute inset-[8%] rounded-full border border-[#53d7ff]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(-25deg)]" />
-          <div className="pointer-events-none absolute inset-[16%] rounded-full border border-[#ff28b9]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(35deg)]" />
-          <div className="pointer-events-none absolute left-[15%] top-[18%] size-2 rounded-full bg-[#53d7ff] shadow-[0_0_20px_5px_rgba(83,215,255,0.5)]" />
-          <div className="pointer-events-none absolute right-[16%] top-[27%] size-1.5 rounded-full bg-[#ff28b9] shadow-[0_0_18px_5px_rgba(255,40,185,0.5)]" />
-          <div className="pointer-events-none absolute bottom-[19%] left-[19%] size-1.5 rounded-full bg-white/90 shadow-[0_0_16px_4px_rgba(83,215,255,0.38)]" />
-          <AssetFrame
-            asset={siteImages.homepageCrystal}
-            className="relative aspect-square w-full"
-            sizes="(max-width: 768px) 92vw, 48vw"
-            fallback={
-              <div className="absolute inset-0">
-                <div className="absolute inset-[15%] rounded-full bg-blue/10 blur-3xl" />
-                <HeroScene />
-              </div>
-            }
-          />
+          <div className="relative aspect-square w-full">
+            <div className="pointer-events-none absolute inset-[15%] rounded-full bg-blue/10 blur-3xl" />
+            <HeroScene />
+            <div className="pointer-events-none absolute inset-[8%] rounded-full border border-[#53d7ff]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(-25deg)]" />
+            <div className="pointer-events-none absolute inset-[16%] rounded-full border border-[#ff28b9]/20 [transform:perspective(600px)_rotateX(68deg)_rotate(35deg)]" />
+            <div className="pointer-events-none absolute left-[15%] top-[18%] size-2 rounded-full bg-[#53d7ff] shadow-[0_0_20px_5px_rgba(83,215,255,0.5)]" />
+            <div className="pointer-events-none absolute right-[16%] top-[27%] size-1.5 rounded-full bg-[#ff28b9] shadow-[0_0_18px_5px_rgba(255,40,185,0.5)]" />
+            <div className="pointer-events-none absolute bottom-[19%] left-[19%] size-1.5 rounded-full bg-white/90 shadow-[0_0_16px_4px_rgba(83,215,255,0.38)]" />
+          </div>
           <div className="absolute bottom-[6%] right-[4%] z-[3] flex max-w-[90%] flex-col items-end gap-1.5 text-right">
             <span className="flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#53d7ff]">
               <span className="size-1.5 rounded-full bg-[#ff28b9]" />
@@ -184,7 +175,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1320px] justify-between gap-4 border-t border-white/10 px-5 py-4 text-[8px] tracking-[0.12em] text-[#8690a8] sm:px-8 md:text-[9px]">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1320px] justify-between gap-4 border-t border-white/10 px-5 py-4 text-[8px] tracking-[0.12em] text-[#8690a8] sm:px-8 md:text-[9px]">
         <span>INDEPENDENT TECHNOLOGY STUDIO</span>
         <span>IDEAS → PRODUCTS → IMPACT</span>
       </div>

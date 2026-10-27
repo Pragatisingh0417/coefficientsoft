@@ -68,3 +68,67 @@
     scroll-behavior: auto;
   }
 }
+
+body:has(.about-cosmic-page) footer {
+  background-color: rgba(7, 8, 18, 0.72);
+}
+
+body:has(.services-cosmic-page) .services-cosmic-page main > section:first-child {
+  background-color: rgba(7, 8, 18, 0.18);
+}
+
+body:has(.services-cosmic-page) footer {
+  background-color: rgba(7, 8, 18, 0.72);
+}
+
+body:has(.home-three-page) .home-three-page > section {
+  background-color: rgba(7, 8, 18, 0.18);
+}
+
+body:has(.home-three-page) #home-hero {
+  background-color: transparent;
+}
+
+body:has(.home-three-page) #home-hero > div:first-child {
+  opacity: 0.58;
+}
+
+body:has(.home-three-page) #work {
+  background-image: linear-gradient(
+    135deg,
+    rgba(12, 13, 28, 0.36),
+    rgba(16, 16, 32, 0.32) 54%,
+    rgba(10, 11, 24, 0.38)
+  );
+}
+
+body:has(.home-three-page) #home-process,
+body:has(.home-three-page) #home-principles,
+body:has(.home-three-page) #client-perspectives {
+  background-color: rgba(7, 8, 18, 0.2);
+  background-image: none;
+}
+
+body:has(.home-three-page) .home-three-page #connected-experiences {
+  background-color: rgba(7, 8, 18, 0.2);
+}
+
+body:has(.home-three-page) .home-three-page #home-hero {
+  background-color: transparent;
+}
+
+body:has(.home-three-page) .home-three-page #contact {
+  background-color: rgba(7, 8, 18, 0.2);
+}
+
+body:has(.home-three-page) .home-three-page #contact > div:first-child {
+  opacity: 0.5;
+}
+
+body:has(.home-three-page) .home-three-page #home-technology {
+  background-color: rgba(7, 8, 18, 0.16);
+}
+
+body:has(.home-three-page) footer {
+  background-color: rgba(7, 8, 18, 0.72);
+}

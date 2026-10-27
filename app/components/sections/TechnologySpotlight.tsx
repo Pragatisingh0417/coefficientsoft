@@ -85,12 +85,12 @@ export default function TechnologySpotlight() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate min-h-[520px] overflow-hidden border-y border-white/10 bg-[#080a16] sm:min-h-[580px]">
+    <section id="home-technology" className="relative isolate min-h-[520px] overflow-hidden border-y border-white/10 bg-transparent sm:min-h-[580px]">
       <motion.div
         aria-hidden="true"
-        className="absolute inset-0"
-        initial={reduceMotion ? false : { opacity: 1, scale: 1.035 }}
-        whileInView={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+        className="absolute inset-0 opacity-[0.34]"
+        initial={reduceMotion ? false : { opacity: 0.34, scale: 1.035 }}
+        whileInView={reduceMotion ? undefined : { opacity: 0.34, scale: 1 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
       >
@@ -101,7 +101,7 @@ export default function TechnologySpotlight() {
           fallback={<TechnologyArtwork />}
         />
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,18,0.98)_0%,rgba(7,8,18,0.9)_35%,rgba(7,8,18,0.42)_72%,rgba(7,8,18,0.24)_100%),linear-gradient(0deg,rgba(7,8,18,0.5),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,18,0.9)_0%,rgba(7,8,18,0.77)_35%,rgba(7,8,18,0.3)_72%,rgba(7,8,18,0.16)_100%),linear-gradient(0deg,rgba(7,8,18,0.4),transparent_55%)]" />
       <div className="relative mx-auto flex min-h-[520px] w-full max-w-[1320px] items-center px-5 py-20 sm:min-h-[580px] sm:px-8 md:py-24">
         <div className="max-w-[570px]" data-reveal>
           <span className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">

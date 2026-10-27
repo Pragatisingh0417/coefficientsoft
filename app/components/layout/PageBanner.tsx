@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { SiteImage } from "../../data/site-images";
+import PageExperience from "./PageExperience";
 import AssetFrame from "./AssetFrame";
 
 type PageBannerProps = {
@@ -111,19 +112,9 @@ export default function PageBanner({
     </div>
   );
 
-  const artwork = (
+  const artwork = variant === "about" ? null : (
     <div className="relative z-0 min-h-56 min-w-0">
       {variant === "services" && <SystemsIllustration />}
-      {variant === "about" && image && (
-        <AssetFrame
-          asset={image}
-          className="aspect-[4/3] w-full border border-white/15"
-          sizes="(max-width: 768px) 100vw, 45vw"
-          fallback={
-            <div className="h-full w-full bg-gradient-to-br from-[#1a222d] via-[#0d1219] to-[#102038]" />
-          }
-        />
-      )}
       {variant === "careers" && image ? (
         <AssetFrame
           asset={image}
@@ -142,17 +133,57 @@ export default function PageBanner({
         />
       ) : null}
       {variant === "contact" && !image && <ContactIllustration />}
+      <PageExperience variant={variant} />
     </div>
   );
 
   return (
-    <header className="relative isolate overflow-hidden border-b border-white/10 bg-[#070812]">
-      <div className={`absolute inset-0 -z-10 ${variant === "about" ? "bg-[radial-gradient(ellipse_at_82%_42%,rgba(8,127,255,0.2),transparent_42%),radial-gradient(ellipse_at_58%_78%,rgba(255,40,185,0.11),transparent_40%),linear-gradient(110deg,#070812,#101020)]" : variant === "contact" ? "bg-[radial-gradient(ellipse_at_82%_55%,rgba(8,127,255,0.2),transparent_42%),radial-gradient(ellipse_at_45%_88%,rgba(139,46,255,0.12),transparent_42%),#0b0c1a]" : variant === "services" ? "bg-[radial-gradient(ellipse_at_80%_48%,rgba(255,40,185,0.13),transparent_40%),linear-gradient(112deg,#070812_0%,#0c0d1b_54%,#101020_100%)]" : "bg-[radial-gradient(ellipse_at_83%_48%,rgba(8,127,255,0.18),transparent_42%),radial-gradient(ellipse_at_55%_85%,rgba(139,46,255,0.1),transparent_38%),linear-gradient(100deg,#070812,#101020)]"}`} />
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(rgba(173,191,232,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(173,191,232,0.07)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_at_78%_45%,black,transparent_68%)]" />
-      <div className="mx-auto grid min-h-[470px] w-full max-w-[1320px] grid-cols-1 items-center gap-8 px-5 py-14 sm:px-8 md:min-h-[520px] md:grid-cols-[minmax(0,1fr)_minmax(300px,0.9fr)] md:gap-12 md:py-16 lg:gap-20">
+    <header
+      className={`relative isolate overflow-hidden border-b border-white/10 ${
+        variant === "about"
+          ? "min-h-[calc(100svh-82px)] bg-transparent"
+          : "bg-[#070812]"
+      }`}
+    >
+      <div
+        className={`absolute inset-0 -z-10 ${
+          variant === "about"
+            ? "bg-[radial-gradient(ellipse_at_78%_40%,rgba(93,56,255,0.1),transparent_45%),linear-gradient(110deg,rgba(5,6,16,0.12),transparent_75%)]"
+            : variant === "contact"
+              ? "bg-[radial-gradient(ellipse_at_82%_55%,rgba(8,127,255,0.2),transparent_42%),radial-gradient(ellipse_at_45%_88%,rgba(139,46,255,0.12),transparent_42%),#0b0c1a]"
+              : variant === "services"
+                ? "bg-[radial-gradient(ellipse_at_80%_48%,rgba(255,40,185,0.13),transparent_40%),linear-gradient(112deg,#070812_0%,#0c0d1b_54%,#101020_100%)]"
+                : "bg-[radial-gradient(ellipse_at_83%_48%,rgba(8,127,255,0.18),transparent_42%),radial-gradient(ellipse_at_55%_85%,rgba(139,46,255,0.1),transparent_38%),linear-gradient(100deg,#070812,#101020)]"
+        }`}
+      />
+      {variant === "about" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(5,6,16,0.84)_0%,rgba(5,6,16,0.66)_36%,rgba(5,6,16,0.12)_75%,rgba(5,6,16,0.03)_100%),linear-gradient(0deg,rgba(5,6,16,0.5),transparent_32%,rgba(5,6,16,0.1))]"
+        />
+      )}
+      {variant !== "about" && (
+        <div className="pointer-events-none absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(rgba(173,191,232,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(173,191,232,0.07)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_at_78%_45%,black,transparent_68%)]" />
+      )}
+      <div
+        className={`relative z-20 mx-auto grid w-full items-center gap-8 px-5 sm:px-8 ${
+          variant === "about"
+            ? "min-h-[calc(100svh-82px)] max-w-[1320px] grid-cols-1 py-16 md:py-20"
+            : "min-h-[470px] max-w-[1320px] grid-cols-1 py-14 md:min-h-[520px] md:grid-cols-[minmax(0,1fr)_minmax(300px,0.9fr)] md:gap-12 md:py-16 lg:gap-20"
+        }`}
+      >
         {copy}
         {artwork}
       </div>
+      {variant === "about" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-7 right-7 z-20 hidden items-center gap-3 text-[9px] font-medium uppercase tracking-[0.2em] text-[#c4c8df]/75 sm:flex"
+        >
+          <span>Scroll to travel</span>
+          <span className="h-10 w-px bg-gradient-to-b from-[#9d8aff] to-transparent" />
+        </div>
+      )}
     </header>
   );
 }

@@ -17,17 +17,26 @@ export default function ScrollReveals() {
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.fromTo(
           element,
-          { y: 24, opacity: 0 },
+          {
+            y: 32,
+            opacity: 0,
+            scale: 0.94,
+            rotationX: 2.5,
+            transformPerspective: 900,
+            transformOrigin: "center bottom",
+          },
           {
             y: 0,
             opacity: 1,
-            duration: 0.75,
-            ease: "power2.out",
+            scale: 1,
+            rotationX: 0,
+            ease: "none",
             immediateRender: false,
             scrollTrigger: {
               trigger: element,
-              start: "top 88%",
-              once: true,
+              start: "top 92%",
+              end: "top 65%",
+              scrub: 0.7,
             },
           }
         );

@@ -42,7 +42,7 @@ const processSteps = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-three-page">
       <Hero />
       <NetworkStory />
       <Services />
@@ -67,7 +67,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <section className="border-y border-white/10 bg-[#101020] py-20 sm:px-0 md:py-28">
+      <section id="home-process" className="border-y border-white/10 bg-transparent py-20 sm:px-0 md:py-28">
        <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
         <div className="mb-9 flex flex-col gap-5 md:mb-10 md:flex-row md:items-end md:justify-between md:gap-11" data-reveal>
           <div>
@@ -87,7 +87,7 @@ export default function Home() {
         <div className="relative grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <div className="pointer-events-none absolute left-[8%] right-[8%] top-5 hidden h-px bg-gradient-to-r from-[#53d7ff]/20 via-blue/60 to-[#ff28b9]/55 lg:block" />
           {processSteps.map(({ number, title, description }) => (
-            <article className="group relative min-h-[242px] overflow-hidden border border-white/[0.08] bg-[#0b0c19] px-5 py-6 transition-colors hover:border-[#53d7ff]/35" key={number} data-reveal>
+            <article className="group relative min-h-[242px] overflow-hidden border border-white/[0.08] bg-[#0b0c19]/75 px-5 py-6 transition-colors hover:border-[#53d7ff]/35" key={number} data-reveal>
               <div className="pointer-events-none absolute -right-12 -top-16 size-40 rounded-full bg-[#087fff]/[0.09] blur-3xl transition-colors group-hover:bg-[#ff28b9]/[0.12]" />
               <span className="relative z-10 grid size-10 place-items-center rounded-full border border-[#53d7ff]/45 bg-[#101020] text-[12px] font-bold text-[#53d7ff]">{number}</span>
               <h3 className="relative mb-2.5 mt-6 text-[21px] font-semibold tracking-[-0.04em]">{title}</h3>
@@ -100,29 +100,33 @@ export default function Home() {
 
       <TechnologySpotlight />
 
-      <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_10%_30%,rgba(8,127,255,0.13),transparent_38%),radial-gradient(ellipse_at_92%_80%,rgba(255,40,185,0.08),transparent_34%),#0b0c19] py-20 md:py-28">
+      <section id="home-principles" className="border-y border-white/10 bg-transparent py-20 md:py-28">
         <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-10 px-5 sm:px-8 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
           <div data-reveal>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">WHAT GUIDES THE WORK</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#53d7ff]">WHY COEFFICIENTSOFT</span>
             <h2 className="mb-4 mt-5 text-[clamp(37px,4.6vw,58px)] leading-[1.04] tracking-[-0.06em]">
-              Clear principles,
+              A thoughtful partner
               <br />
-              <span className="text-[#909ab1]">not borrowed promises.</span>
+              <span className="text-[#909ab1]">for work that matters.</span>
             </h2>
             <p className="max-w-[430px] text-[14px] leading-[1.85] text-muted">
-              We do not publish unverified endorsements. Here is what we aim to
-              bring to every collaboration.
+              Practical engineering, clear decisions, and a process shaped
+              around the people and outcomes behind your product.
             </p>
           </div>
           <div className="border-t border-white/10">
             {[
-              "Make the problem clear.",
-              "Keep decisions practical.",
-              "Build for the people using it.",
-            ].map((principle, index) => (
-              <div className="grid min-h-[82px] grid-cols-[52px_1fr] items-center border-b border-white/10" key={principle} data-reveal>
-                <span className="text-[11px] text-[#6e7a8d]">0{index + 1}</span>
-                <h3 className="text-[clamp(17px,2vw,21px)] font-medium tracking-[-0.02em]">{principle}</h3>
+              ["01", "Start with context", "We learn the workflow and constraints before recommending a solution."],
+              ["02", "Choose what fits", "Technology and scope should serve the goal—not add complexity for its own sake."],
+              ["03", "Make progress visible", "Focused steps and clear decisions keep the work understandable as it evolves."],
+              ["04", "Build for what comes next", "Thoughtful foundations make it easier to maintain, improve, and grow the product."],
+            ].map(([number, title, description]) => (
+              <div className="grid min-h-[96px] grid-cols-[42px_1fr] items-start gap-3 border-b border-white/10 py-5 sm:grid-cols-[52px_1fr] sm:gap-4" key={number} data-reveal>
+                <span className="pt-1 text-[11px] text-[#6e7a8d]">{number}</span>
+                <div>
+                  <h3 className="mb-1 text-[clamp(17px,2vw,21px)] font-medium tracking-[-0.02em]">{title}</h3>
+                  <p className="mb-0 max-w-[540px] text-[13px] leading-[1.7] text-muted">{description}</p>
+                </div>
               </div>
             ))}
           </div>

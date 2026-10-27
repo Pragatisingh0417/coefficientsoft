@@ -7,8 +7,6 @@ import {
   Waypoints,
 } from "lucide-react";
 import PageBanner from "../components/layout/PageBanner";
-import AssetFrame from "../components/layout/AssetFrame";
-import { siteImages } from "../data/site-images";
 
 const principles = [
   {
@@ -53,7 +51,7 @@ const primaryButton =
 
 export default function AboutPage() {
   return (
-    <div className="pb-10">
+    <div className="about-cosmic-page pb-10">
       <PageBanner
         eyebrow="ABOUT COEFFICIENTSOFT"
         title="Engineering shaped around real work."
@@ -61,7 +59,6 @@ export default function AboutPage() {
         variant="about"
         action={{ label: "Discuss a project", href: "/contact" }}
         secondaryAction={{ label: "Explore services", href: "/services" }}
-        image={siteImages.aboutCollaboration}
       />
 
       <main>
@@ -89,7 +86,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_8%_18%,rgba(8,127,255,0.11),transparent_38%),#101020] py-20 md:py-28">
+        <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_8%_18%,rgba(8,127,255,0.11),transparent_38%),rgba(16,16,32,0.58)] py-20 md:py-28">
           <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
             <div className="mb-10 grid grid-cols-1 gap-5 md:mb-14 md:grid-cols-[1fr_0.7fr] md:items-end md:gap-12" data-reveal>
               <div>
@@ -153,59 +150,32 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_84%_50%,rgba(255,40,185,0.1),transparent_40%),#0b0c19]">
-          <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-9 px-5 py-16 sm:px-8 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:py-24">
-            <div data-reveal>
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#78b7ff]">
-                ENGINEERING WITH CURIOSITY
-              </span>
-              <h2 className="mb-0 mt-5 max-w-[510px] text-[clamp(36px,4.6vw,58px)] leading-[1.05] tracking-[-0.06em]">
-                Ideas take shape
-                <br />
-                <span className="text-[#8995a6]">through thoughtful work.</span>
-              </h2>
-              <p className="mb-0 mt-5 max-w-[460px] text-[16px] leading-[1.85] text-muted">
-                We explore what is possible, test what is useful, and turn
-                emerging ideas into intelligent products built for real needs.
-              </p>
-            </div>
-            <div className="relative" data-reveal>
-              <AssetFrame
-                asset={siteImages.aboutSphere}
-                className="aspect-[4/3] w-full border border-white/10 bg-[#080a0f]"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                fallback={
-                  <div className="absolute inset-0 grid place-items-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_52%,rgba(8,127,255,0.17),transparent_54%),#080a0f]">
-                    <svg
-                      className="h-[78%] w-[78%] max-w-[430px]"
-                      viewBox="0 0 440 330"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <defs>
-                        <radialGradient id="about-sphere" cx="0" cy="0" r="1" gradientTransform="matrix(130 180 -180 130 162 95)" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#BDE2FF" />
-                          <stop offset=".36" stopColor="#378DE4" />
-                          <stop offset=".78" stopColor="#0C4F91" />
-                          <stop offset="1" stopColor="#071629" />
-                        </radialGradient>
-                        <linearGradient id="sphere-ribbon" x1="90" x2="360" y1="90" y2="264" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#D7EEFF" stopOpacity=".56" />
-                          <stop offset=".48" stopColor="#78B7FF" stopOpacity=".12" />
-                          <stop offset="1" stopColor="#087FFF" stopOpacity=".48" />
-                        </linearGradient>
-                      </defs>
-                      <circle cx="220" cy="165" r="108" fill="url(#about-sphere)" />
-                      <path d="M108 149c43-79 149-112 229-49 40 31 50 83 21 123-24 33-62 49-107 44 51-18 74-61 55-98-25-48-91-60-198-20Z" fill="url(#sphere-ribbon)" />
-                      <ellipse cx="220" cy="165" rx="108" ry="42" stroke="#A6D6FF" strokeOpacity=".38" transform="rotate(-24 220 165)" />
-                      <ellipse cx="220" cy="165" rx="96" ry="58" stroke="#78B7FF" strokeOpacity=".22" transform="rotate(43 220 165)" />
-                    </svg>
-                  </div>
-                }
-              />
-              <span className="absolute bottom-4 left-4 text-[9px] font-medium uppercase tracking-[0.18em] text-[#b9d8fb]">
-                EXPLORE · ENGINEER · REFINE
-              </span>
+        <section className="relative overflow-hidden border-y border-white/10 bg-[radial-gradient(ellipse_at_50%_50%,rgba(139,92,246,0.08),transparent_62%),rgba(7,8,18,0.28)]">
+          <div className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-8 md:py-28">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_0.8fr] md:items-end md:gap-16">
+              <div data-reveal>
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#bdaeff]">
+                  ENGINEERING WITH CURIOSITY
+                </span>
+                <h2 className="mb-0 mt-5 max-w-[680px] text-[clamp(40px,6vw,76px)] leading-[0.98] tracking-[-0.065em]">
+                  Ideas take shape
+                  <br />
+                  <span className="text-[#8995a6]">through thoughtful work.</span>
+                </h2>
+              </div>
+              <div className="border-l border-[#9d8aff]/45 pl-5 md:pl-8" data-reveal>
+                <p className="mb-0 max-w-[490px] text-[16px] leading-[1.9] text-[#c5cada] md:text-[18px]">
+                  We explore what is possible, test what is useful, and turn
+                  emerging ideas into intelligent products built for real needs.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.17em] text-[#9d8aff]">
+                  <span>Explore</span>
+                  <span aria-hidden="true">/</span>
+                  <span>Engineer</span>
+                  <span aria-hidden="true">/</span>
+                  <span>Refine</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>

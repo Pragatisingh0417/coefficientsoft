@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Navbar from "./components/layout/Navbar";
+import RouteExperience from "./components/layout/RouteExperience";
 import ScrollReveals from "./components/layout/ScrollReveals";
 import { services } from "./data/services";
 import "./globals.css";
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen">
+        <div className="relative isolate min-h-screen">
+          <RouteExperience />
+          <div className="relative z-10">
           <Navbar />
           <ScrollReveals />
           {children}
@@ -114,6 +117,7 @@ export default function RootLayout({
               <span>Software · Products · Digital experiences</span>
             </div>
           </footer>
+          </div>
         </div>
       </body>
     </html>

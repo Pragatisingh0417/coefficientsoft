@@ -78,7 +78,7 @@ export default function NetworkStory() {
   return (
     <section
       id="connected-experiences"
-      className="relative isolate overflow-hidden border-y border-white/10 bg-[#0b0c19]"
+      className="relative isolate overflow-hidden border-y border-white/10 bg-transparent"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_15%_50%,rgba(8,127,255,0.1),transparent_40%),radial-gradient(ellipse_at_95%_55%,rgba(255,40,185,0.08),transparent_35%)]" />
       <div className="mx-auto grid w-full max-w-[1320px] grid-cols-1 items-center gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16 lg:py-28">
