@@ -13,9 +13,9 @@ export const siteImages = {
     aspectRatio: "1 / 1",
   },
   servicesHeroArtwork: {
-    src: null,
-    filename: "services/website-development.jpg",
-    alt: "Cinematic crystal artwork with illuminated fragments against a dark blue-violet atmosphere",
+    src: "/images/hero/services-systems.svg",
+    filename: "hero/services-systems.svg",
+    alt: "Transparent illustration of connected software systems orbiting a central hub",
     aspectRatio: "16 / 9",
   },
   homepageNetwork: {
@@ -37,14 +37,14 @@ export const siteImages = {
     aspectRatio: "4 / 3",
   },
   homepageProduct: {
-    src: "/images/projects/product-interface-capability.svg",
-    filename: "projects/product-interface-capability.svg",
+    src: "/images/projects/product-interface-capability.jpg",
+    filename: "projects/product-interface-capability.jpg",
     alt: "Illustrative software interface with abstract charts and panels, without real business data",
     aspectRatio: "16 / 10",
   },
   homepageSystems: {
-    src: "/images/services/custom-software-integrations.svg",
-    filename: "services/custom-software-integrations.svg",
+    src: "/images/services/custom-software-integrations.jpg",
+    filename: "services/custom-software-integrations.jpg",
     alt: "Abstract illustration of software systems connected through a central integration",
     aspectRatio: "16 / 10",
   },
@@ -107,5 +107,23 @@ export const siteImages = {
     filename: "contact/contact-connections.svg",
     alt: "Abstract blue network illustration representing a project conversation",
     aspectRatio: "4 / 3",
+  },
+  aboutHero: {
+    src: "/images/hero/about-engineering.svg",
+    filename: "hero/about-engineering.svg",
+    alt: "Illustration of a software engineer working at a laptop, surrounded by floating interface panels",
+    aspectRatio: "19 / 16",
+  },
+  careersHero: {
+    src: "/images/hero/careers-growth.svg",
+    filename: "hero/careers-growth.svg",
+    alt: "Transparent illustration of a glowing path ascending through learning milestones",
+    aspectRatio: "19 / 16",
+  },
+  contactHero: {
+    src: "/images/hero/contact-orbit.svg",
+    filename: "hero/contact-orbit.svg",
+    alt: "Transparent illustration of connected communication points around a shared center",
+    aspectRatio: "19 / 16",
   },
 } as const satisfies Record<string, SiteImage>;

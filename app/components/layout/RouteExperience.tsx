@@ -14,7 +14,17 @@ export default function RouteExperience() {
     return <PageExperience fullPage variant="servicesBackground" />;
   }
 
-  if (pathname !== "/about") return null;
+  if (pathname === "/about") {
+    return <PageExperience fullPage variant="about" />;
+  }
 
-  return <PageExperience fullPage variant="about" />;
+  if (pathname === "/careers") {
+    return <PageExperience fullPage variant="careers" />;
+  }
+
+  if (pathname === "/contact") {
+    return <PageExperience fullPage variant="contact" />;
+  }
+
+  return null;
 }

@@ -22,7 +22,7 @@ decorative imagery as `alt: ""`.
 | Services / full-bleed crystal hero | `servicesHeroArtwork` | `hero/crystal-artwork.webp` | 16:9 |
 | Home / connected experiences background | `homepageNetwork` | `home/network-background.webp` | 16:9 |
 | Home / lower technology spotlight | `homepageTechnology` | `about/liquid-sphere.webp` | 16:9 crop |
-| Home / software product capability | `homepageProduct` | `projects/product-interface-capability.svg` | 16:10 |
+| Home / software product capability | `homepageProduct` | `projects/product-interface-capability.jpg` | 16:10 |
 | Home / connected systems capability | `homepageSystems` | `services/custom-software-integrations.svg` | 16:10 |
 | Home / mobile applications capability | `homepageMobile` | `services/mobile-app.jpg` | 4:3 |
 | About / engineering approach sphere | `aboutSphere` | `about/liquid-sphere.webp` | 4:3 |

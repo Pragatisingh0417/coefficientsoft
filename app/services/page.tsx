@@ -267,20 +267,28 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {challenges.map(({ icon: Icon, title, description, number }) => (
                 <article
-                  className="min-h-[230px] border border-white/10 bg-[#0a0c19]/75 p-5 transition-colors hover:border-[#53d7ff]/35 sm:p-6"
+                  className="min-h-[230px]"
                   key={number}
                   data-reveal
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="grid size-10 place-items-center border border-[#53d7ff]/30 bg-[#087fff]/[0.07] text-[#75caff]">
-                      <Icon size={19} strokeWidth={1.6} aria-hidden="true" />
-                    </span>
-                    <span className="text-[10px] tracking-[0.16em] text-[#717d91]">{number}</span>
+                  <div className="card-depth h-full border border-white/10 bg-[#090c18]/95 p-5 backdrop-blur-md sm:p-6">
+                    <div className="flex min-w-0 items-center justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="grid size-10 shrink-0 place-items-center border border-[#53d7ff]/30 bg-[#087fff]/[0.09] text-[#75caff]">
+                          <Icon size={19} strokeWidth={1.6} aria-hidden="true" />
+                        </span>
+                        <h3 className="m-0 min-w-0 text-[16px] font-semibold leading-[1.3] tracking-[-0.03em] sm:text-[18px]">
+                          {title}
+                        </h3>
+                      </div>
+                      <span className="shrink-0 text-[10px] tracking-[0.16em] text-[#8997ad]">
+                        {number}
+                      </span>
+                    </div>
+                    <p className="mb-0 mt-5 text-[14px] leading-[1.75] text-[#c2ccdc]">
+                      {description}
+                    </p>
                   </div>
-                  <h3 className="mb-2 mt-7 text-[18px] font-semibold leading-[1.3] tracking-[-0.03em]">
-                    {title}
-                  </h3>
-                  <p className="mb-0 text-[13px] leading-[1.75] text-muted">{description}</p>
                 </article>
               ))}
             </div>
@@ -306,28 +314,43 @@ export default function ServicesPage() {
                 and collaborative at each step.
               </p>
             </div>
-            <ol className="relative grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="relative">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute left-[7%] right-[7%] top-8 hidden h-px bg-gradient-to-r from-[#53d7ff]/10 via-[#53d7ff]/50 to-[#ff28b9]/30 lg:block"
               />
-              {processSteps.map(({ number, title, description, icon: Icon }) => (
-                <li
-                  className="relative border border-white/10 bg-[#080b18]/75 p-5 sm:p-6"
-                  key={number}
-                  data-reveal
-                >
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="grid size-11 place-items-center rounded-full border border-[#53d7ff]/40 bg-[#0b1020] text-[#71cbff]">
-                      <Icon size={19} strokeWidth={1.6} aria-hidden="true" />
-                    </span>
-                    <span className="text-[10px] tracking-[0.15em] text-[#7b879a]">{number}</span>
-                  </div>
-                  <h3 className="mb-2 mt-6 text-[20px] font-semibold tracking-[-0.035em]">{title}</h3>
-                  <p className="mb-0 text-[13px] leading-[1.75] text-muted">{description}</p>
-                </li>
-              ))}
-            </ol>
+              <ol className="grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+                {processSteps.map(({ number, title, description, icon: Icon }) => (
+                  <li
+                    className="relative"
+                    key={number}
+                    data-reveal
+                  >
+                    <div className="card-depth relative h-full border border-white/10 bg-[#090c18]/95 p-5 backdrop-blur-md sm:p-6">
+                      <div className="relative z-10 flex items-center justify-between gap-3">
+                        <div className="flex min-w-0 items-center gap-3">
+                          <span className="grid size-9 shrink-0 place-items-center rounded-full border border-[#53d7ff]/40 bg-[#0b1020] text-[10px] font-semibold text-[#71cbff]">
+                            {number}
+                          </span>
+                          <h3 className="m-0 text-[17px] font-semibold leading-[1.25] tracking-[-0.035em] sm:text-[19px]">
+                            {title}
+                          </h3>
+                        </div>
+                        <Icon
+                          className="shrink-0 text-[#53d7ff]"
+                          size={18}
+                          strokeWidth={1.6}
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <p className="mb-0 mt-5 text-[14px] leading-[1.75] text-[#c2ccdc]">
+                        {description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 
@@ -351,18 +374,24 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {reasons.map(({ title, description }, index) => (
                 <article
-                  className="border border-white/10 bg-[#080b18]/70 p-5 sm:p-6"
+                  className="h-full"
                   key={title}
                   data-reveal
                 >
-                  <span className="grid size-8 place-items-center border border-[#53d7ff]/35 text-[#65c4ff]">
-                    <Check size={16} aria-hidden="true" />
-                  </span>
-                  <h3 className="mb-2 mt-5 text-[17px] font-semibold tracking-[-0.025em]">
-                    {title}
-                  </h3>
-                  <p className="mb-0 text-[13px] leading-[1.7] text-muted">{description}</p>
-                  <span aria-hidden="true" className="sr-only">Reason {index + 1}</span>
+                  <div className="card-depth h-full border border-white/10 bg-[#090c18]/95 p-5 backdrop-blur-md sm:p-6">
+                    <div className="flex min-w-0 items-center gap-3">
+                      <span className="grid size-8 shrink-0 place-items-center border border-[#53d7ff]/35 text-[#65c4ff]">
+                        <Check size={16} aria-hidden="true" />
+                      </span>
+                      <h3 className="m-0 min-w-0 text-[16px] font-semibold leading-[1.3] tracking-[-0.025em] sm:text-[17px]">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="mb-0 mt-4 text-[14px] leading-[1.7] text-[#c2ccdc]">
+                      {description}
+                    </p>
+                    <span aria-hidden="true" className="sr-only">Reason {index + 1}</span>
+                  </div>
                 </article>
               ))}
             </div>
@@ -389,16 +418,31 @@ export default function ServicesPage() {
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {industries.map(({ icon: Icon, title, description }, index) => (
                 <article
-                  className="border border-white/10 bg-[#080b18]/70 p-5 transition-colors hover:border-[#53d7ff]/35 sm:p-6"
+                  className="h-full"
                   key={title}
                   data-reveal
                 >
-                  <div className="flex items-center justify-between">
-                    <Icon size={22} strokeWidth={1.5} className="text-[#75caff]" aria-hidden="true" />
-                    <span className="text-[10px] tracking-[0.15em] text-[#717d91]">0{index + 1}</span>
+                  <div className="card-depth h-full border border-white/10 bg-[#090c18]/95 p-5 backdrop-blur-md sm:p-6">
+                    <div className="flex min-w-0 items-center justify-between gap-3">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <Icon
+                          size={22}
+                          strokeWidth={1.5}
+                          className="shrink-0 text-[#75caff]"
+                          aria-hidden="true"
+                        />
+                        <h3 className="m-0 min-w-0 text-[16px] font-semibold leading-[1.3] tracking-[-0.03em] sm:text-[18px]">
+                          {title}
+                        </h3>
+                      </div>
+                      <span className="shrink-0 text-[10px] tracking-[0.15em] text-[#8997ad]">
+                        0{index + 1}
+                      </span>
+                    </div>
+                    <p className="mb-0 mt-5 text-[14px] leading-[1.75] text-[#c2ccdc]">
+                      {description}
+                    </p>
                   </div>
-                  <h3 className="mb-2 mt-7 text-[18px] font-semibold tracking-[-0.03em]">{title}</h3>
-                  <p className="mb-0 text-[13px] leading-[1.75] text-muted">{description}</p>
                 </article>
               ))}
             </div>
@@ -486,7 +530,11 @@ export default function ServicesPage() {
                   A few details will help us understand what you need.
                 </p>
               </div>
-              <ContactForm defaultService="Website Development" />
+              <ContactForm
+                compact
+                defaultBudget="Not sure yet"
+                defaultService="Website Development"
+              />
             </div>
           </div>
         </section>

@@ -3,8 +3,11 @@ import {
   ArrowRight,
   Compass,
   Gauge,
+  SlidersHorizontal,
   ShieldCheck,
+  UsersRound,
   Waypoints,
+  Workflow,
 } from "lucide-react";
 import PageBanner from "../components/layout/PageBanner";
 
@@ -106,19 +109,43 @@ export default function AboutPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-              <article className="relative flex min-h-[340px] flex-col justify-between overflow-hidden border border-[#53d7ff]/20 bg-[#101020] p-7 sm:p-9" data-reveal>
+              <article className="relative flex min-h-[340px] flex-col gap-8 overflow-hidden border border-[#53d7ff]/20 bg-[#101020] p-7 sm:p-9" data-reveal>
                 <div className="absolute -right-12 -top-12 size-64 rounded-full border border-[#53d7ff]/15" aria-hidden="true" />
                 <div className="absolute -right-1 top-0 h-full w-px bg-gradient-to-b from-transparent via-[#ff28b9]/30 to-transparent" aria-hidden="true" />
                 <div className="relative">
-                  <span className="grid size-12 place-items-center border border-[#53d7ff]/45 bg-blue/10 text-[#53d7ff]">
-                    <Compass size={24} aria-hidden="true" />
-                  </span>
-                  <span className="mt-8 block text-[11px] font-semibold tracking-[0.18em] text-[#53d7ff]">
+                  <div className="flex items-center gap-4">
+                    <span className="grid size-12 shrink-0 place-items-center border border-[#53d7ff]/45 bg-blue/10 text-[#53d7ff]">
+                      <Compass size={24} aria-hidden="true" />
+                    </span>
+                    <h3 className="m-0 max-w-[420px] text-[24px] leading-tight tracking-[-0.04em] sm:text-[30px]">
+                      Keep the work connected to the people it serves.
+                    </h3>
+                  </div>
+                  <span className="mt-5 block text-[11px] font-semibold tracking-[0.18em] text-[#53d7ff]">
                     01 / BEGIN WITH CONTEXT
                   </span>
-                  <h3 className="mb-3 mt-3 max-w-[420px] text-[30px] leading-tight tracking-[-0.04em] sm:text-[36px]">
-                    Keep the work connected to the people it serves.
-                  </h3>
+                </div>
+                <div className="relative mt-auto">
+                  <span className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8997ad]">
+                    UNDERSTAND BEFORE BUILDING
+                  </span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {[
+                      { label: "People", icon: UsersRound },
+                      { label: "Workflow", icon: Workflow },
+                      { label: "Constraints", icon: SlidersHorizontal },
+                    ].map(({ label, icon: Icon }) => (
+                      <div
+                        className="flex min-h-[82px] flex-col items-center justify-center gap-2 border border-white/10 bg-[#0b0e1c]/85 px-1.5 py-3 text-center"
+                        key={label}
+                      >
+                        <Icon className="text-[#53d7ff]" size={18} aria-hidden="true" />
+                        <span className="text-[11px] font-medium text-[#d9e1ec] sm:text-xs">
+                          {label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <p className="relative mb-0 max-w-[470px] text-[16px] leading-[1.8] text-muted">
                   Understand the workflow and constraints first. Choose
@@ -128,18 +155,24 @@ export default function AboutPage() {
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
                 {principles.slice(1).map(({ number, title, description, icon: Icon }) => (
-                  <article className="grid min-h-[148px] grid-cols-[52px_1fr] gap-4 border border-white/10 bg-[#0c0d1a] p-5 sm:p-6" key={number} data-reveal>
-                    <span className="grid size-11 place-items-center border border-[#53d7ff]/35 bg-blue/[0.07] text-[#53d7ff]">
-                      <Icon size={21} aria-hidden="true" />
-                    </span>
-                    <div>
-                      <span className="text-[10px] font-semibold tracking-[0.16em] text-[#77869b]">
-                        {number}
-                      </span>
-                      <h3 className="mb-2 mt-1 text-[20px] leading-[1.25] tracking-[-0.03em]">
-                        {title}
-                      </h3>
-                      <p className="m-0 text-[15px] leading-[1.75] text-muted">
+                  <article
+                    className="min-h-[148px]"
+                    key={number}
+                    data-reveal
+                  >
+                    <div className="card-depth h-full border border-white/10 bg-[#0b0e1c]/95 p-5 backdrop-blur-md sm:p-6">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <span className="grid size-11 shrink-0 place-items-center border border-[#53d7ff]/35 bg-blue/[0.07] text-[#53d7ff]">
+                          <Icon size={21} aria-hidden="true" />
+                        </span>
+                        <h3 className="m-0 min-w-0 flex-1 text-[18px] leading-[1.25] tracking-[-0.03em] text-white sm:text-[20px]">
+                          {title}
+                        </h3>
+                        <span className="shrink-0 text-[10px] font-semibold tracking-[0.16em] text-[#8997ad]">
+                          {number}
+                        </span>
+                      </div>
+                      <p className="mb-0 mt-4 text-[15px] leading-[1.75] text-[#c2ccdc]">
                         {description}
                       </p>
                     </div>
@@ -199,14 +232,20 @@ export default function AboutPage() {
           </div>
           <ol className="grid grid-cols-1 border-t border-white/15 sm:grid-cols-2 lg:grid-cols-4">
             {process.map(([number, title, description]) => (
-              <li className="min-h-[210px] border-b border-white/10 px-4 py-6 sm:border-b-0 lg:border-l lg:border-white/10 lg:pl-6 lg:first:border-l-0 lg:first:pl-0" key={number} data-reveal>
-                <span className="grid size-10 place-items-center rounded-full border border-blue/50 bg-[#0a111b] text-[12px] font-semibold text-[#78b7ff]">
-                  {number}
-                </span>
-                <h3 className="mb-2 mt-5 text-[22px] font-medium tracking-[-0.03em]">
-                  {title}
-                </h3>
-                <p className="mb-0 max-w-[250px] text-[15px] leading-[1.8] text-muted">
+              <li
+                className="min-h-[210px] border-b border-white/10 px-4 py-6 sm:border-b-0 lg:border-l lg:border-white/10 lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
+                key={number}
+                data-reveal
+              >
+                <div className="flex items-center gap-3">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-blue/50 bg-[#0a111b] text-[11px] font-semibold text-[#78b7ff]">
+                    {number}
+                  </span>
+                  <h3 className="m-0 text-[19px] font-medium tracking-[-0.03em]">
+                    {title}
+                  </h3>
+                </div>
+                <p className="mb-0 mt-4 max-w-[250px] text-[15px] leading-[1.8] text-muted">
                   {description}
                 </p>
               </li>

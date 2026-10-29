@@ -7,7 +7,7 @@ import { siteImages } from "../data/site-images";
 
 export default function ContactPage() {
   return (
-    <div className="pb-10">
+    <div className="contact-cosmic-page pb-10">
       <PageBanner
         eyebrow="CONTACT"
         title="Let’s talk about what you’re building."

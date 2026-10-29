@@ -69,7 +69,49 @@
   }
 }
 
+@layer components {
+  .card-depth {
+    transform: perspective(1100px) rotateX(0deg) rotateY(0deg) translateZ(0);
+    transform-style: preserve-3d;
+    transition:
+      transform 280ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      box-shadow 280ms ease,
+      border-color 280ms ease,
+      background-color 280ms ease;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.045),
+      0 12px 32px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card-depth:hover {
+    transform: perspective(1100px) rotateX(2deg) rotateY(-1.5deg) translate3d(0, -5px, 8px);
+    border-color: rgba(83, 215, 255, 0.42);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 24px 48px rgba(0, 0, 0, 0.36),
+      0 0 26px rgba(8, 127, 255, 0.1);
+  }
+}
+
 body:has(.about-cosmic-page) footer {
+  background-color: rgba(7, 8, 18, 0.72);
+}
+
+body:has(.careers-cosmic-page) .careers-cosmic-page main > section {
+  background-color: rgba(7, 8, 18, 0.2);
+}
+
+body:has(.careers-cosmic-page) footer {
+  background-color: rgba(7, 8, 18, 0.72);
+}
+
+body:has(.contact-cosmic-page) .contact-cosmic-page main > section {
+  background-color: rgba(7, 8, 18, 0.2);
+}
+
+body:has(.contact-cosmic-page) footer {
   background-color: rgba(7, 8, 18, 0.72);
 }
 

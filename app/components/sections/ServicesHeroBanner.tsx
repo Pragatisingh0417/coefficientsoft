@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import PageExperience from "../layout/PageExperience";
 import { siteImages } from "../../data/site-images";
 
@@ -9,17 +9,21 @@ export default function ServicesHeroBanner() {
 
   return (
     <header className="relative isolate min-h-[630px] overflow-hidden border-b border-white/10 bg-transparent sm:min-h-[660px] lg:min-h-[700px]">
-      {artwork.src && (
-        <Image
-          src={artwork.src}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[70%_center] md:object-[64%_center]"
-        />
-      )}
       <PageExperience variant="services" />
+
+      {artwork.src && (
+        <div className="pointer-events-none absolute right-[-55%] top-[22%] z-[2] aspect-square w-[75%] opacity-20 md:right-[1%] md:top-1/2 md:w-[51%] md:-translate-y-1/2 md:opacity-95">
+          <Image
+            src={artwork.src}
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="(max-width: 767px) 82vw, 52vw"
+            className="object-contain drop-shadow-[0_0_52px_rgba(8,127,255,0.15)]"
+          />
+        </div>
+      )}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(7,8,18,0.82)_0%,rgba(7,8,18,0.73)_30%,rgba(7,8,18,0.52)_51%,rgba(7,8,18,0.1)_78%,rgba(7,8,18,0.04)_100%),linear-gradient(0deg,rgba(7,8,18,0.3),transparent_34%,rgba(7,8,18,0.08))]"

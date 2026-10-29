@@ -475,7 +475,9 @@ function OrbitalScene({
           ? 18
           : variant === "servicesBackground"
             ? 17
-            : 5.3;
+            : variant === "careers" || variant === "contact"
+              ? 14.5
+              : 5.3;
     camera.current.position.z = THREE.MathUtils.damp(
       camera.current.position.z,
       cameraStart - targets.current.zoom - cursorZoom,
@@ -498,9 +500,17 @@ function OrbitalScene({
               ? 18
               : variant === "servicesBackground"
                 ? 17
+                : variant === "careers" || variant === "contact"
+                  ? 14.5
                 : 5.3,
         ]}
-        fov={variant === "homeBackground" || variant === "servicesBackground" ? 52 : 37}
+        fov={
+          variant === "homeBackground" || variant === "servicesBackground"
+            ? 52
+            : variant === "careers" || variant === "contact"
+              ? 45
+              : 37
+        }
       />
       <ambientLight intensity={0.72} />
       <directionalLight position={[2, 3, 4]} color="#d7edff" intensity={2.1} />
@@ -856,6 +866,10 @@ export default function HeroScene({
                   ? 9.5
                   : variant === "servicesBackground"
                     ? 9
+                    : variant === "careers"
+                      ? 8.5
+                      : variant === "contact"
+                        ? 7.5
                   : 1.55,
             tilt: 0.2,
             ease: "none",

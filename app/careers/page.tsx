@@ -1,177 +1,298 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  BookOpenCheck,
-  MessagesSquare,
-  Wrench,
+  Compass,
+  FileText,
+  MessageCircleQuestion,
+  Route,
+  Sparkles,
 } from "lucide-react";
 import PageBanner from "../components/layout/PageBanner";
-import InternshipRoleCard from "../components/sections/InternshipRoleCard";
-import { internshipOpenings } from "../data/internships";
-import { siteImages } from "../data/site-images";
+import InternshipInterestSection from "../components/sections/InternshipInterestSection";
+import { GuidanceRequestForm } from "../components/sections/CareerForms";
+import { careerFaqs } from "../data/careers";
 
-const principles = [
+const guidanceServices = [
   {
-    number: "01",
-    title: "Learn through the work",
+    icon: Compass,
+    title: "Career Direction & Planning",
     description:
-      "Build understanding by contributing to practical product and engineering work.",
-    icon: BookOpenCheck,
+      "Explore roles that may fit your interests and map practical next steps.",
   },
   {
-    number: "02",
-    title: "Share ideas early",
+    icon: FileText,
+    title: "Resume & Portfolio Review",
     description:
-      "Ask questions, make decisions visible, and learn through useful feedback.",
-    icon: MessagesSquare,
+      "Get constructive feedback on how clearly your experience and work are presented.",
   },
   {
-    number: "03",
-    title: "Care about the details",
+    icon: MessageCircleQuestion,
+    title: "Interview Preparation",
     description:
-      "Treat quality and the experience of the people using the software as part of the craft.",
-    icon: Wrench,
+      "Practice explaining your experience and prepare for common interview conversations.",
+  },
+  {
+    icon: Route,
+    title: "Skills & Learning Roadmaps",
+    description:
+      "Identify relevant skills and organize learning into manageable milestones.",
+  },
+  {
+    icon: Sparkles,
+    title: "Career Transition Guidance",
+    description:
+      "Consider how existing experience may transfer as you explore a different path.",
   },
 ];
 
-const primaryButton =
-  "inline-flex min-h-12 items-center justify-center gap-2.5 border border-blue bg-blue px-5 text-[14px] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#2690ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue";
+const internshipSteps = [
+  "Submit your application.",
+  "Application review.",
+  "Discussion or assessment, if applicable.",
+  "Receive an update on next steps.",
+];
+
+const guidanceSteps = [
+  "Share your goals.",
+  "Request a session.",
+  "Confirm the arrangements.",
+  "Work through your next steps.",
+];
+
+const sectionEyebrow =
+  "text-[11px] font-bold uppercase tracking-[0.2em] text-[#78b7ff]";
+const sectionTitle =
+  "mb-0 mt-5 text-[clamp(36px,4.7vw,58px)] leading-[1.07] tracking-[-0.055em]";
 
 export default function CareersPage() {
-  const applicationEmail = process.env.CAREERS_CONTACT_EMAIL?.trim();
-  const applicationHref = applicationEmail
-    ? `mailto:${applicationEmail}?subject=${encodeURIComponent("Internship enquiry")}`
-    : "/contact";
-
   return (
-    <div className="pb-10">
+    <div className="careers-cosmic-page pb-10">
       <PageBanner
-        eyebrow="CAREERS & INTERNSHIPS"
-        title="Curiosity, craft, and room to grow."
-        description="CoefficientSoft works across product thinking, design, and software delivery. We value thoughtful contributions, practical learning, and clear collaboration."
+        eyebrow="CAREERS, INTERNSHIPS & GUIDANCE"
+        title="Your potential deserves a place to grow."
+        description="Whether you're beginning your professional journey or looking for direction, CoefficientSoft helps you explore opportunities, develop practical skills, and take your next step with confidence."
         variant="careers"
-        action={{ label: "Ask about opportunities", href: applicationHref }}
-        image={siteImages.careersLearning}
+        action={{ label: "Apply for an Internship", href: "#internship-application" }}
+        secondaryAction={{
+          label: "Explore Career Guidance",
+          href: "#career-guidance",
+        }}
       />
 
       <main>
-        <section className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-7 px-5 py-20 sm:px-8 md:grid-cols-[0.85fr_1.15fr] md:gap-16 md:py-28">
+        <InternshipInterestSection />
+
+        <section
+          className="mx-auto grid w-full max-w-[1200px] gap-8 px-5 py-20 sm:px-8 md:grid-cols-[0.8fr_1.2fr] md:gap-16 md:py-28"
+          id="who-can-apply"
+        >
           <div data-reveal>
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#78b7ff]">
-              WORKING AND LEARNING
-            </span>
-            <h2 className="mb-0 mt-5 max-w-[460px] text-[clamp(38px,5vw,60px)] leading-[1.06] tracking-[-0.055em]">
-              Make useful things.{" "}
-              <span className="text-[#8995a6]">Keep learning.</span>
+            <span className={sectionEyebrow}>A PLACE TO BEGIN</span>
+            <h2 className={sectionTitle}>
+              Who can{" "}
+              <span className="text-[#8995a6]">get in touch?</span>
             </h2>
           </div>
-          <div className="border-l border-blue/55 pl-5 md:pl-8" data-reveal>
-            <p className="m-0 max-w-[690px] text-[17px] leading-[1.85] text-[#d9e1ec] md:text-[18px]">
-              Our work spans digital products, websites, mobile applications,
-              and connected software. We welcome people who care about
-              understanding the problem and making a considered contribution.
+          <div className="border-l border-[#53d7ff]/45 pl-5 md:pl-8" data-reveal>
+            <p className="mt-0 text-[16px] leading-[1.85] text-[#d9e1ec]">
+              Students, recent graduates, self-taught learners, and people
+              exploring a career change are welcome to share their interests.
+              Tell us what you have been learning, what kind of work motivates
+              you, and what you hope to explore.
             </p>
-            <p className="mb-0 mt-5 max-w-[650px] text-[16px] leading-[1.9] text-muted">
-              Internship opportunities are announced periodically. We publish
-              openings here when they are confirmed; there are no unlisted
-              vacancies or hiring promises on this page.
+            <h3 className="mb-2 mt-7 text-[18px] font-semibold">
+              Build a learning path around your goals
+            </h3>
+            <p className="mb-0 text-[15px] leading-[1.8] text-muted">
+              Start with fundamentals, practice through small projects, ask for
+              feedback, and keep a portfolio of work you can explain. The most
+              useful next skill depends on the role and experience you want to
+              pursue—there is no single required path for everyone.
             </p>
           </div>
         </section>
 
-        <section className="border-y border-white/10 bg-[radial-gradient(ellipse_at_12%_24%,rgba(255,40,185,0.09),transparent_38%),#101020] py-20 md:py-28">
+        <section
+          className="border-y border-white/10 bg-[radial-gradient(ellipse_at_18%_35%,rgba(139,46,255,0.12),transparent_42%),rgba(7,8,18,0.22)] py-20 md:py-28"
+          id="career-guidance"
+        >
           <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
-            <div className="mb-9 grid grid-cols-1 gap-5 md:mb-12 md:grid-cols-[1fr_0.65fr] md:items-end md:gap-12" data-reveal>
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#78b7ff]">
-                  HOW WE WORK
-                </span>
-                <h2 className="mb-0 mt-5 max-w-[620px] text-[clamp(38px,5vw,60px)] leading-[1.06] tracking-[-0.055em]">
-                  Good work grows through{" "}
-                  <span className="text-[#8995a6]">shared effort.</span>
-                </h2>
-              </div>
-              <p className="mb-1 max-w-[420px] text-[16px] leading-[1.85] text-muted">
-                Learning, communication, and engineering quality are part of
-                how we approach the work.
+            <div className="mb-10 max-w-[740px] md:mb-14" data-reveal>
+              <span className={sectionEyebrow}>PRACTICAL CAREER SUPPORT</span>
+              <h2 className={sectionTitle}>
+                Clarity for your{" "}
+                <span className="text-[#8995a6]">next career move.</span>
+              </h2>
+              <p className="mb-0 mt-5 text-[16px] leading-[1.85] text-muted">
+                Not sure which direction to take? Get guidance to help you
+                understand your options, identify skill gaps, and make a
+                practical plan for your next step.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 border-t border-white/10 md:grid-cols-3 md:border-t-0">
-              {principles.map(({ number, title, description, icon: Icon }) => (
-                <article className="grid grid-cols-[52px_1fr] gap-4 border-b border-white/10 py-6 first:pt-6 md:min-h-[250px] md:block md:border-l md:border-t md:px-6 md:py-7 md:first:border-l-0 md:first:pl-0" key={number} data-reveal>
-                  <span className="grid size-11 place-items-center border border-[#53d7ff]/40 bg-blue/[0.08] text-[#53d7ff] md:mb-8">
-                    <Icon size={22} aria-hidden="true" />
-                  </span>
-                  <div>
-                    <span className="text-[10px] font-semibold tracking-[0.16em] text-[#77869b]">
-                      {number}
-                    </span>
-                    <h3 className="mb-2 mt-1 text-[22px] leading-[1.25] tracking-[-0.03em]">
-                      {title}
-                    </h3>
-                    <p className="m-0 max-w-[330px] text-[15px] leading-[1.8] text-muted">
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              {guidanceServices.map(({ icon: Icon, title, description }) => (
+                <article
+                  className="h-full"
+                  key={title}
+                  data-reveal
+                >
+                  <div className="card-depth h-full border border-white/10 bg-[#0b0e1c]/95 p-5 backdrop-blur-md sm:p-6">
+                    <div className="mb-4 flex min-w-0 items-center gap-3">
+                      <span className="grid size-11 shrink-0 place-items-center border border-[#53d7ff]/35 bg-[#53d7ff]/[0.08] text-[#53d7ff]">
+                        <Icon size={20} aria-hidden="true" />
+                      </span>
+                      <h3 className="m-0 min-w-0 text-[17px] font-semibold leading-[1.3] tracking-[-0.02em] text-white sm:text-[19px]">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="mb-0 text-[14px] leading-[1.75] text-[#c2ccdc]">
                       {description}
                     </p>
                   </div>
                 </article>
               ))}
             </div>
+
+            <div className="mt-12 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12" id="guidance-request-form">
+              <div className="lg:sticky lg:top-28 lg:self-start" data-reveal>
+                <h3 className="mb-3 text-[clamp(28px,3.8vw,40px)] leading-[1.12] tracking-[-0.045em]">
+                  Request a guidance session
+                </h3>
+                <p className="mb-5 text-[15px] leading-[1.8] text-muted">
+                  Choose the topic that would be most useful and tell us what
+                  you hope to work through. The team will follow up to clarify
+                  whether guidance is available and discuss arrangements.
+                </p>
+                <p className="mb-0 border-l-2 border-[#8a70ff]/70 pl-4 text-[13px] leading-[1.75] text-[#c5cede]">
+                  This is practical, career-focused guidance—not clinical or
+                  mental-health counselling. No job or employment outcome is
+                  guaranteed. Please do not include sensitive personal or
+                  medical details.
+                </p>
+              </div>
+              <GuidanceRequestForm />
+            </div>
           </div>
         </section>
 
         <section className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-8 md:py-28">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
-            <div data-reveal>
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#78b7ff]">
-                OPENINGS
-              </span>
-              {internshipOpenings.length > 0 ? (
-                <>
-                  <h2 className="mb-5 mt-5 text-[clamp(36px,4.5vw,56px)] leading-[1.08] tracking-[-0.055em]">
-                    Opportunities to{" "}
-                    <span className="text-[#8995a6]">learn and contribute.</span>
-                  </h2>
-                  <div className="grid gap-4">
-                    {internshipOpenings.map((opening) => (
-                      <InternshipRoleCard key={opening.id} opening={opening} />
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h2 className="mb-4 mt-5 text-[clamp(36px,4.5vw,56px)] leading-[1.08] tracking-[-0.055em]">
-                    No listed openings{" "}
-                    <span className="text-[#8995a6]">right now.</span>
-                  </h2>
-                  <p className="mb-0 max-w-[500px] text-[16px] leading-[1.85] text-muted">
-                    There are currently no confirmed roles in the openings
-                    list. Check back for updates, or use the open application
-                    option to introduce yourself.
-                  </p>
-                </>
-              )}
-            </div>
+          <div className="mb-10 max-w-[700px] md:mb-14" data-reveal>
+            <span className={sectionEyebrow}>WHAT TO EXPECT</span>
+            <h2 className={sectionTitle}>
+              A clear next step,{" "}
+              <span className="text-[#8995a6]">without the guesswork.</span>
+            </h2>
+            <p className="mb-0 mt-5 text-[16px] leading-[1.85] text-muted">
+              Each enquiry is reviewed on its own merits. The steps below
+              explain the process without promising a particular outcome or
+              response timeline.
+            </p>
+          </div>
 
-            <aside className="relative flex flex-col justify-between overflow-hidden border border-[#53d7ff]/25 bg-[radial-gradient(ellipse_at_82%_18%,rgba(139,46,255,0.16),transparent_42%),#101020] p-6 sm:p-8 md:min-h-[320px]" data-reveal>
-              <div className="absolute -right-20 -top-20 size-72 rounded-full border border-[#ff28b9]/20" aria-hidden="true" />
-              <div className="relative">
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#78b7ff]">
-                  OPEN APPLICATION
-                </span>
-                <h3 className="mb-3 mt-4 max-w-[420px] text-[clamp(28px,3.4vw,40px)] leading-[1.12] tracking-[-0.045em]">
-                  Tell us what you&apos;re interested in.
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-6">
+            {[
+              {
+                title: "Internship interest",
+                description:
+                  "An expression of interest is not an application to an open position.",
+                steps: internshipSteps,
+              },
+              {
+                title: "Career guidance",
+                description:
+                  "Requests are confirmed only after availability and arrangements are discussed.",
+                steps: guidanceSteps,
+              },
+            ].map((journey) => (
+              <div className="border-t border-[#53d7ff]/40 pt-5" key={journey.title}>
+                <h3 className="mb-2 text-[24px] tracking-[-0.035em]">
+                  {journey.title}
                 </h3>
-                <p className="mb-0 max-w-[470px] text-[16px] leading-[1.85] text-muted">
-                  Share the kind of work you enjoy, what you are learning, and
-                  how you would like to contribute. We can only confirm
-                  opportunities that are currently available.
+                <p className="mb-6 text-[14px] leading-[1.75] text-muted">
+                  {journey.description}
                 </p>
+                <ol className="grid gap-3">
+                  {journey.steps.map((step, index) => (
+                    <li
+                      className="flex items-start gap-4 border border-white/10 bg-[#101020]/75 px-4 py-4"
+                      key={step}
+                    >
+                      <span className="grid size-8 shrink-0 place-items-center rounded-full border border-[#53d7ff]/30 text-[11px] font-bold text-[#9ce7ff]">
+                        0{index + 1}
+                      </span>
+                      <span className="pt-1 text-[14px] leading-[1.65] text-[#d9e1ef]">
+                        {step}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
               </div>
-              <Link href={applicationHref} className={`${primaryButton} relative mt-7 w-fit`}>
-                Introduce yourself <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-            </aside>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-white/10 bg-[rgba(7,8,18,0.22)] py-20 md:py-28">
+          <div className="mx-auto grid w-full max-w-[1200px] gap-8 px-5 sm:px-8 md:grid-cols-[0.72fr_1.28fr] md:gap-16">
+            <div data-reveal>
+              <span className={sectionEyebrow}>GOOD TO KNOW</span>
+              <h2 className={sectionTitle}>
+                Questions,{" "}
+                <span className="text-[#8995a6]">answered.</span>
+              </h2>
+              <p className="mb-0 mt-5 text-[15px] leading-[1.8] text-muted">
+                We keep the details clear and will confirm specifics directly
+                when an opportunity or guidance arrangement is available.
+              </p>
+            </div>
+            <div className="divide-y divide-white/10 border-y border-white/10">
+              {careerFaqs.map(({ question, answer }) => (
+                <details className="group py-5" key={question}>
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-5 text-[16px] font-semibold leading-[1.5] text-white marker:hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#53d7ff]">
+                    {question}
+                    <span
+                      className="grid size-8 shrink-0 place-items-center rounded-full border border-white/15 text-[#9ce7ff] transition group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mb-0 mt-4 max-w-[720px] pr-10 text-[14px] leading-[1.8] text-muted">
+                    {answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-[1200px] px-5 py-20 sm:px-8 md:py-28">
+          <div className="relative overflow-hidden border border-[#53d7ff]/25 bg-[radial-gradient(ellipse_at_85%_12%,rgba(8,127,255,0.18),transparent_42%),radial-gradient(ellipse_at_8%_100%,rgba(139,46,255,0.16),transparent_45%),rgba(16,16,32,0.9)] p-7 sm:p-10 md:p-14" data-reveal>
+            <div className="relative z-10 max-w-[720px]">
+              <span className={sectionEyebrow}>YOUR NEXT STEP STARTS HERE</span>
+              <h2 className="mb-4 mt-5 text-[clamp(36px,5vw,58px)] leading-[1.06] tracking-[-0.055em]">
+                Start with a conversation.
+              </h2>
+              <p className="mb-7 max-w-[600px] text-[16px] leading-[1.8] text-muted">
+                Share an area you would like to explore or a career question
+                you are working through. We will be clear about what can
+                happen next.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  className="inline-flex min-h-12 items-center justify-center gap-2.5 border border-blue bg-blue px-5 text-[14px] font-semibold text-white transition hover:bg-[#2690ff]"
+                  href="#internship-application"
+                >
+                  Share internship interest <ArrowRight size={17} aria-hidden="true" />
+                </Link>
+                <Link
+                  className="inline-flex min-h-12 items-center justify-center border border-white/20 px-5 text-[14px] font-semibold text-white transition hover:border-[#53d7ff]/60"
+                  href="#guidance-request-form"
+                >
+                  Request career guidance
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </main>

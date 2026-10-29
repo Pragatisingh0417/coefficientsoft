@@ -32,9 +32,13 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 type SubmissionFeedback = { tone: "success" | "error"; message: string };
 
 export default function ContactForm({
+  compact = false,
   defaultService = "",
+  defaultBudget = "",
 }: {
+  compact?: boolean;
   defaultService?: string;
+  defaultBudget?: string;
 }) {
   const [feedback, setFeedback] = useState<SubmissionFeedback | null>(null);
   const {
@@ -46,7 +50,7 @@ export default function ContactForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       company: "",
-      budget: "",
+      budget: defaultBudget,
       service: defaultService,
     },
   });
@@ -131,10 +135,12 @@ export default function ContactForm({
           )}
         </div>
 
-        <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
-          <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="company">Company or project name (optional)</label>
-          <input id="company" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("company")} />
-        </div>
+        {!compact && (
+          <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
+            <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="company">Company or project name (optional)</label>
+            <input id="company" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("company")} />
+          </div>
+        )}
 
         <div className="flex min-w-0 flex-col gap-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="service">Service of interest</label>
@@ -157,15 +163,15 @@ export default function ContactForm({
 
         <div className="flex min-w-0 flex-col gap-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="budget">Project budget (optional)</label>
-          <input id="budget" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("budget")} />
+          <input id="budget" placeholder="Not sure yet" className="min-h-[54px] w-full border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] text-white placeholder:text-[#778397] focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60" {...register("budget")} />
         </div>
 
         <div className="flex min-w-0 flex-col gap-2 sm:col-span-2">
           <label className="text-[13px] font-semibold text-[#d9e1ef]" htmlFor="projectDescription">Project description</label>
           <textarea
             id="projectDescription"
-            rows={6}
-            className="min-h-[150px] w-full resize-y border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] leading-[1.6] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60"
+            rows={compact ? 4 : 6}
+            className={`${compact ? "min-h-[120px]" : "min-h-[150px]"} w-full resize-y border border-white/15 bg-[#090a17] px-4 py-3 text-[16px] leading-[1.6] text-white focus:border-[#53d7ff] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue/60`}
             {...register("projectDescription")}
             aria-invalid={!!errors.projectDescription}
             aria-describedby={

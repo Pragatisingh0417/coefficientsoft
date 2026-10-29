@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import FloatingContactButtons from "./components/layout/FloatingContactButtons";
 import Navbar from "./components/layout/Navbar";
 import RouteExperience from "./components/layout/RouteExperience";
 import ScrollReveals from "./components/layout/ScrollReveals";
@@ -28,6 +29,7 @@ export default function RootLayout({
           <Navbar />
           <ScrollReveals />
           {children}
+          <FloatingContactButtons />
           <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#070812] text-[#b0b7ca]">
             <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_12%_10%,rgba(8,127,255,0.14),transparent_35%),radial-gradient(ellipse_at_88%_20%,rgba(255,40,185,0.09),transparent_34%)]" />
             <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-6 border-b border-white/10 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between md:py-14">
